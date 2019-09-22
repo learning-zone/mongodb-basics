@@ -1,6 +1,4 @@
-## MEAN-Stack
-
-### MongoDB Interview Questions and Answers
+## MongoDB Interview Questions and Answers
 
 #### Q1: Explain what is MongoDB? 
 Mongo-DB is a document database which provides high performance,
