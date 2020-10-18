@@ -1,72 +1,132 @@
-## MongoDB Interview Questions 
+# MongoDB Interview Questions
 
-<br/>
+## Q. ***What is MongoDB?***
 
-#### Q. ***Explain what is MongoDB?*** 
-Mongo-DB is a document database which provides high performance,
-high availability and easy scalability.
+Mongo-DB is a document database which provides high performance, high availability and easy scalability. Its important features are:
 
-#### Q. ***How many indexes does MongoDB create by default for a new collection?*** 
-By default, MongoDB created the _id collection for every collection.
-
-#### Q. ***Does Mongodb Support Foreign Key Constraints?*** 
-No. MongoDB does not support such relationships.
-
-#### Q. ***Which are the most important features of MongoDB?*** 
 * Flexible data model in form of documents
 * Agile and highly scalable database
 * Faster than traditional databases
 * Expressive query language
 
-#### Q. ***What are Indexes in MongoDB?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How many indexes does MongoDB create by default for a new collection?*** 
+
+By default, MongoDB created the _id collection for every collection.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are Indexes in MongoDB?*** 
+
 Indexes support the efficient execution of queries in MongoDB. Without indexes, MongoDB must perform a collection scan, i.e. scan every document in a collection, to select those documents that match the query statement. If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents it must inspect.
 
-#### Q. ***Why does Profiler use in MongoDB?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why does Profiler use in MongoDB?*** 
+
 MongoDB uses a database profiler to perform characteristics of each operation against the database. You can use a profiler to find queries and write operations
 
-#### Q. ***If you remove an object attribute, is it deleted from the database?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***If you remove an object attribute, is it deleted from the database?*** 
+
 Yes, it be. Remove the attribute and then re-save () the object.
 
-#### Q. ***Does MongoDB need a lot space of Random Access Memory (RAM)?*** 
-No. MongoDB can be run on small free space of RAM.
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
-#### Q. ***What is “Namespace” in MongoDB?*** 
+## Q. ***What is “Namespace” in MongoDB?*** 
+
 MongoDB stores BSON (Binary Interchange and Structure Object Notation) objects in the collection. The concatenation of the collection name and database name is called a namespace
 
-#### Q. ***Mention the command to insert a document in a database called school and collection called persons?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Mention the command to insert a document in a database called school and collection called persons?*** 
+
 ```js
 use school;
-db.persons.insert( { name: "Pradeep", dept: "CSE" } )
+db.persons.insert( { name: "Alex", age: "28" } )
 ```
 
-#### Q. ***What is a replica set?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is a replica set?*** 
+
 It is a group of mongo instances that maintain same data set. Replica sets provide redundancy and high availability, and are the basis for all production deployments.
 
-#### Q. ***When should we embed one document within another in MongoDB?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***When should we embed one document within another in MongoDB?*** 
+
 You should consider embedding documents for:
 
 * *contains* relationships between entities
 * One-to-many relationships
 * Performance reasons
 
-#### Q. ***How is data stored in MongoDB?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How is data stored in MongoDB?*** 
+
 Data in MongoDB is stored in BSON documents – JSON-style data structures. Documents contain one or more fields, and each field contains a value of a specific data type, including arrays, binary data and sub-documents. Documents that tend to share a similar structure are organized as collections.
 
 It may be helpful to think of documents as analogous to rows in a relational database, fields as similar to columns, and collections as similar to tables.
 
-#### Q. ***What Is Replication In Mongodb?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What Is Replication In Mongodb?*** 
+
 Replication is the process of synchronizing data across multiple servers. Replication provides redundancy and increases data availability. With multiple copies of data on different database servers, replication protects a database from the loss of a single server. Replication also allows you to recover from hardware failure and service interruptions.
 
-#### Q. ***What are the differences between MongoDB and SQL SERVER?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What are the differences between MongoDB and SQL SERVER?*** 
+
 * The MongoDB store the data in documents with JSON format but SQL store the data in Table format.
 * The MongoDB provides high performance, high availability, easy scalability etc.  rather than SQL Server.
 * In the MongoDB, we can change the structure simply by adding, removing column from the existing documents.
 
-#### Q. ***Compare SQL databases and MongoDB at a high level?***
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Compare SQL databases and MongoDB at a high level?***
+
 SQL databases store data in form of tables, rows, columns and records. This data is stored in a pre-defined data model which is not very much flexible for today's real-world highly growing applications. MongoDB in contrast uses a flexible structure which can be easily modified and extended.
 
-#### Q. ***Can you create an index on an array field in MongoDB?*** 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Can you create an index on an array field in MongoDB?***
+
 Yes. An array field can be indexed in MongoDB. In this case, MongoDB would index each value of the array.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
 
 #### Q. ***How can you achieve transaction and locking in MongoDB?*** 
 #### Q. ***What are NoSQL databases? What are the different types of NoSQL databases?*** 
@@ -112,6 +172,17 @@ Yes. An array field can be indexed in MongoDB. In this case, MongoDB would index
 #### Q. ***Is MongoDB schema-less?*** 
 #### Q. ***What is the advantage of the backup features in Ops Manager versus traditional backup strategies?*** 
 #### Q. ***What is splitting in mongodb?*** 
-#### Q. ***Which are the two storage engines used by MongoDB?*** 
 #### Q. ***What is a Storage Engine in MongoDB?***
 #### Q. ***How to condense large volumes of data in Mongo?*** 
+#### Q. ***What is horizontal scalability?***
+#### Q. ***Is it possible to update MongoDB field using value of another field?***
+#### Q. ***How to check if a field contains a substring?***
+#### Q. ***How to find document with array that contains a specific value?***
+#### Q. ***How to find MongoDB records where array field is not empty?***
+#### Q. ***How to get the last N records from find?***
+#### Q. ***Explain relationships in mongodb?***
+#### Q. ***What is use of capped collection in MongoDB?***
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
