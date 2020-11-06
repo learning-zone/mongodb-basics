@@ -30,6 +30,8 @@
    <img src="assets/mongodb-compass.png" alt="MongoDB Compass" width="800px" title="MongoDB Compass" />
 </p>
 
+**[[Getting Started](https://docs.mongodb.com/guides/)]**
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
