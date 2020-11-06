@@ -1,13 +1,29 @@
 # MongoDB Interview Questions
 
+*Click <img src="assets/star.png" width="18" height="18" align="absmiddle" title="Star" /> if you like the project. Pull Request are highly appreciated.*
+
+## Table of Contents
+
+* *[MongoDB Commands](mongodb-commands.md)*
+
+<br/>
+
 ## Q. ***What is MongoDB?***
 
-Mongo-DB is a document database which provides high performance, high availability and easy scalability. Its important features are:
+**MongoDB** is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents. Documents consist of key-value pairs which are the basic unit of data in MongoDB. Collections contain sets of documents and function which is the equivalent of relational database tables.
 
-* Flexible data model in form of documents
-* Agile and highly scalable database
-* Faster than traditional databases
-* Expressive query language
+**Key Components**
+
+**1. _id**: The `_id` field represents a unique value in the MongoDB document. The `_id` field is like the document\'s primary key. If you create a new document without an `_id` field, MongoDB will automatically create the field.
+**2. Collection**:  This is a grouping of MongoDB documents. A collection is the equivalent of a table which is created in any other RDMS such as Oracle.
+**3. Cursor**: This is a pointer to the result set of a query. Clients can iterate through a cursor to retrieve results.
+**4. Database**: This is a container for collections like in RDMS wherein it is a container for tables. Each database gets its own set of files on the file system. A MongoDB server can store multiple databases.
+**5. Document**: A record in a MongoDB collection is basically called a document. The document, in turn, will consist of field name and values.
+**6. Field**: A name-value pair in a document. A document has zero or more fields. Fields are analogous to columns in relational databases.
+
+<p align="center">
+   <img src="assets/mongodb-compass.png" alt="MongoDB Compass" width="600px" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -45,7 +61,7 @@ Yes, it be. Remove the attribute and then re-save () the object.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is “Namespace” in MongoDB?*** 
+## Q. ***What is "Namespace" in MongoDB?***
 
 MongoDB stores BSON (Binary Interchange and Structure Object Notation) objects in the collection. The concatenation of the collection name and database name is called a namespace
 
@@ -135,9 +151,9 @@ Yes. An array field can be indexed in MongoDB. In this case, MongoDB would index
 #### Q. ***How can I combine data from multiple collections into one collection?*** 
 #### Q. ***What does MongoDB not being ACID compliant really mean?*** 
 #### Q. ***Find objects between two dates MongoDB?*** 
-#### Q. ***How to query MongoDB with “like”?*** 
+#### Q. ***How to query MongoDB with "like"?*** 
 #### Q. ***Should I normalize my data before storing it in MongoDB?*** 
-#### Q. ***Is there an “upsert” option in the mongodb insert command?*** 
+#### Q. ***Is there an "upsert" option in the mongodb insert command?*** 
 #### Q. ***What is oplog?*** 
 #### Q. ***How can you achieve primary key - foreign key relationships in MongoDB?*** 
 #### Q. ***Does MongoDB pushes the writes to disk immediately or lazily?*** 
