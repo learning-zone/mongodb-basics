@@ -27,7 +27,7 @@
 **6. Field**: A name-value pair in a document. A document has zero or more fields. Fields are analogous to columns in relational databases.
 
 <p align="center">
-   <img src="assets/mongodb-compass.png" alt="MongoDB Compass" width="800px" />
+   <img src="assets/mongodb-compass.png" alt="MongoDB Compass" width="800px" title="MongoDB Compass" />
 </p>
 
 <div align="right">
