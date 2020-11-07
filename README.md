@@ -38,23 +38,25 @@
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How many indexes does MongoDB create by default for a new collection?*** 
+## Q. ***How many indexes does MongoDB create by default for a new collection?***
 
-By default, MongoDB created the _id collection for every collection.
+By default MongoDB creates a unique index on the `_id` field during the creation of a collection. The `_id` index prevents clients from inserting two documents with the same value for the `_id` field.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are Indexes in MongoDB?*** 
+## Q. ***What are Indexes in MongoDB?***
 
 Indexes support the efficient execution of queries in MongoDB. Without indexes, MongoDB must perform a collection scan, i.e. scan every document in a collection, to select those documents that match the query statement. If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents it must inspect.
 
+Indexes are special data structures that store a small portion of the collection\'s data set in an easy to traverse form. The index stores the value of a specific field or set of fields, ordered by the value of the field. The ordering of the index entries supports efficient equality matches and range-based query operations. In addition, MongoDB can return sorted results by using the ordering in the index.
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why does Profiler use in MongoDB?*** 
+## Q. ***Why does Profiler use in MongoDB?***
 
 MongoDB uses a database profiler to perform characteristics of each operation against the database. You can use a profiler to find queries and write operations
 
@@ -62,7 +64,7 @@ MongoDB uses a database profiler to perform characteristics of each operation ag
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***If you remove an object attribute, is it deleted from the database?*** 
+## Q. ***If you remove an object attribute, is it deleted from the database?***
 
 Yes, it be. Remove the attribute and then re-save () the object.
 
