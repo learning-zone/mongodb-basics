@@ -58,7 +58,43 @@ Indexes are special data structures that store a small portion of the collection
 
 ## Q. ***Why does Profiler use in MongoDB?***
 
-MongoDB uses a database profiler to perform characteristics of each operation against the database. You can use a profiler to find queries and write operations
+The database profiler captures data information about read and write operations, cursor operations, and database commands. The database profiler writes data in the `system.profile` collection, which is a capped collection.
+
+The database profiler collects detailed information about Database Commands executed against a running mongod instance. This includes CRUD operations as well as configuration and administration commands.
+
+Profiler has 3 profiling levels.
+
+* **Level 0** - Profiler will not log any data
+* **Level 1** - Profiler will log only slow operations above some threshold
+* **Level 2** - Profiler will log all the operations
+
+**1. To get current profiling level.**
+
+```bash
+db.getProfilingLevel()  
+
+// Output
+0
+```
+
+**2. To check current profiling status**
+
+```bash
+db.getProfilingStatus()
+
+
+// Output
+{ "was" : 0, "slowms" : 100 }
+```
+
+**3. To set profiling level**
+
+```bash
+db.setProfilingLevel(1, 40)
+
+// Output
+{ "was" : 0, "slowms" : 100, "ok" : 1 }
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
