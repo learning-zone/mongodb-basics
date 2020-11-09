@@ -100,9 +100,45 @@ db.setProfilingLevel(1, 40)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***If you remove an object attribute, is it deleted from the database?***
+## Q. ***How to remove attribute from MongoDb Object?***
 
-Yes, it be. Remove the attribute and then re-save () the object.
+**$unset**
+
+The `$unset` operator deletes a particular field. If the field does not exist, then `$unset` does nothing. When used with `$` to match an array element, `$unset` replaces the matching element with `null` rather than removing the matching element from the array. This behavior keeps consistent the array size and element positions.
+
+syntax:
+
+```js
+{ $unset: { <field1>: "", ... } }
+```
+
+**Example**: delete the `properties.service` attribute from all records on this collection.
+
+```js
+db.collection.update(
+    {},
+    {
+        $unset : {
+            "properties.service" : 1
+        }
+    },
+    {
+        multi: true
+    }
+);
+```
+
+**To verify they have been deleted you can use:**
+
+```js
+db.collection.find(
+    {
+        "properties.service" : {
+            $exists : true
+         }
+    }
+).count(true);
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
