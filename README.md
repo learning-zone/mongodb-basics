@@ -163,7 +163,7 @@ db.persons.insert( { name: "Alex", age: "28" } )
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is a replica set?*** 
+## Q. ***What is a replica set?***
 
 It is a group of mongo instances that maintain same data set. Replica sets provide redundancy and high availability, and are the basis for all production deployments.
 
@@ -183,7 +183,7 @@ You should consider embedding documents for:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How is data stored in MongoDB?*** 
+## Q. ***How is data stored in MongoDB?***
 
 Data in MongoDB is stored in BSON documents – JSON-style data structures. Documents contain one or more fields, and each field contains a value of a specific data type, including arrays, binary data and sub-documents. Documents that tend to share a similar structure are organized as collections.
 
@@ -193,7 +193,7 @@ It may be helpful to think of documents as analogous to rows in a relational dat
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What Is Replication In Mongodb?*** 
+## Q. ***What is Replication in Mongodb?***
 
 Replication is the process of synchronizing data across multiple servers. Replication provides redundancy and increases data availability. With multiple copies of data on different database servers, replication protects a database from the loss of a single server. Replication also allows you to recover from hardware failure and service interruptions.
 
@@ -201,11 +201,15 @@ Replication is the process of synchronizing data across multiple servers. Replic
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the differences between MongoDB and SQL SERVER?*** 
+## Q. ***What are the differences between MongoDB and SQL SERVER?***
 
 * The MongoDB store the data in documents with JSON format but SQL store the data in Table format.
 * The MongoDB provides high performance, high availability, easy scalability etc.  rather than SQL Server.
 * In the MongoDB, we can change the structure simply by adding, removing column from the existing documents.
+
+<p align="center">
+  <img src="assets/RDBMS_MongoDB_Mapping.jpg" alt="MongoDB & SQL Server" width="400px" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
