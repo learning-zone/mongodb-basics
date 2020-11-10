@@ -165,7 +165,15 @@ db.persons.insert( { name: "Alex", age: "28" } )
 
 ## Q. ***What is a replica set?***
 
-It is a group of mongo instances that maintain same data set. Replica sets provide redundancy and high availability, and are the basis for all production deployments.
+It is a group of mongo processes that maintain same data set. Replica sets provide redundancy and high availability, and are the basis for all production deployments. A replica set contains a primary node and multiple secondary nodes.
+
+The primary node receives all write operations. A replica set can have only one primary capable of confirming writes with `{ w: "majority" }` write concern; although in some circumstances, another mongod instance may transiently believe itself to also be primary.
+
+The secondaries replicate the primary\'s oplog and apply the operations to their data sets such that the secondaries\' data sets reflect the primary\'s data set. If the primary is unavailable, an eligible secondary will hold an election to elect itself the new primary.
+
+<p align="center">
+  <img src="assets/replica-set.png" alt="Replica Set" width="500px" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
