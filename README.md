@@ -172,7 +172,7 @@ The primary node receives all write operations. A replica set can have only one 
 The secondaries replicate the primary\'s oplog and apply the operations to their data sets such that the secondaries\' data sets reflect the primary\'s data set. If the primary is unavailable, an eligible secondary will hold an election to elect itself the new primary.
 
 <p align="center">
-  <img src="assets/replica-set.png" alt="Replica Set" width="500px" />
+  <img src="assets/replica-set.png" alt="Replica Set" width="400px" />
 </p>
 
 <div align="right">
