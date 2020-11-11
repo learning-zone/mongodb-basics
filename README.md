@@ -163,7 +163,7 @@ db.persons.insert( { name: "Alex", age: "28" } )
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is a Replica Set in MongoDB?***
+## Q. ***What is Replica Set in MongoDB?***
 
 It is a group of mongo processes that maintain same data set. Replica sets provide redundancy and high availability, and are the basis for all production deployments. A replica set contains a primary node and multiple secondary nodes.
 
@@ -179,7 +179,7 @@ The secondaries replicate the primary\'s oplog and apply the operations to their
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. **What is an Embedded MongoDB Document?***
+## Q. ***What is an Embedded MongoDB Document?***
 
 An embedded, or nested, MongoDB Document is a normal document that is nested inside another document within a MongoDB collection. Embedding connected data in a single document can reduce the number of read operations required to obtain data. In general, we should structure our schema so that application receives all of its required information in a single read operation.
 
