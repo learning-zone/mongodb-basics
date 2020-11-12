@@ -26,7 +26,9 @@
 
 **6. Field**: A name-value pair in a document. A document has zero or more fields. Fields are analogous to columns in relational databases.
 
-**Example:** Connecting MongoDB Cloud using MongoDB Compass
+**Example:**
+
+Connecting MongoDB Cloud using MongoDB Compass
 
 <p align="center">
    <img src="assets/mongodb-compass.png" alt="MongoDB Compass" width="800px" title="MongoDB Compass" />
@@ -112,7 +114,9 @@ syntax:
 { $unset: { <field1>: "", ... } }
 ```
 
-**Example**: delete the `properties.service` attribute from all records on this collection.
+**Example:**
+
+delete the `properties.service` attribute from all records on this collection.
 
 ```js
 db.collection.update(
@@ -183,7 +187,9 @@ The secondaries replicate the primary\'s oplog and apply the operations to their
 
 An embedded, or nested, MongoDB Document is a normal document that is nested inside another document within a MongoDB collection. Embedding connected data in a single document can reduce the number of read operations required to obtain data. In general, we should structure our schema so that application receives all of its required information in a single read operation.
 
-**Example**: In the normalized data model, the address documents contain a reference to the patron document.
+**Example:**
+
+In the normalized data model, the address documents contain a reference to the patron document.
 
 ```js
 // patron document
@@ -234,7 +240,7 @@ In MongoDB, Data is stored in BSON documents (short for `Bin­ary JSON`). These 
 
 JSON is formatted as name/value pairs. In JSON documents, field names and values are separated by a colon, field name and value pairs are separated by commas, and sets of fields are encapsulated in “curly braces” ({}).
 
-**Example**
+**Example:**
 
 ```js
 {
