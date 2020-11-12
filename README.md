@@ -230,9 +230,22 @@ You should consider embedding documents for:
 
 ## Q. ***How is data stored in MongoDB?***
 
-Data in MongoDB is stored in BSON documents – JSON-style data structures. Documents contain one or more fields, and each field contains a value of a specific data type, including arrays, binary data and sub-documents. Documents that tend to share a similar structure are organized as collections.
+In MongoDB, Data is stored in BSON documents (short for `Bin­ary JSON`). These documents are stored in MongoDB in JSON (JavaScript Object Notation) format. JSON documents support embedded fields, so related data and lists of data can be stored with the document instead of an external table. Documents contain one or more fields, and each field contains a value of a specific data type, including arrays, binary data and sub-documents. Documents that tend to share a similar structure are organized as collections.
 
-It may be helpful to think of documents as analogous to rows in a relational database, fields as similar to columns, and collections as similar to tables.
+JSON is formatted as name/value pairs. In JSON documents, field names and values are separated by a colon, field name and value pairs are separated by commas, and sets of fields are encapsulated in “curly braces” ({}).
+
+**Example**
+
+```js
+{
+  "name": "notebook",
+  "qty": 50,
+  "rating": [ { "score": 8 }, { "score": 9 } ],
+  "size": { "height": 11, "width": 8.5, "unit": "in" },
+  "status": "A",
+  "tags": [ "college-ruled", "perforated"]
+}
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
