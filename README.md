@@ -267,11 +267,29 @@ JSON is formatted as name/value pairs. In JSON documents, field names and values
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the differences between MongoDB and SQL SERVER?***
+## Q. ***What are the differences between MongoDB and SQL-SERVER?***
 
 * The MongoDB store the data in documents with JSON format but SQL store the data in Table format.
 * The MongoDB provides high performance, high availability, easy scalability etc.  rather than SQL Server.
 * In the MongoDB, we can change the structure simply by adding, removing column from the existing documents.
+
+**MongoDB and SQL Server Comparision Table**
+
+|Base of Comparison  | MS SQL Server      | MongoDB             |
+|--------------------|--------------------|---------------------|
+|Storage Model       |RDBMS               |Document-Oriented    |
+|Joins               |Yes                 |No                   |
+|Transaction         |ACID                |Multi-document ACID Transactions with snapshot isolation |
+|Agile practices     |No                  |Yes                  |
+|Data Schema         |Fixed               |Dynamic              |
+|Scalability         |Vertical            |Horizontal           |
+|Map Reduce          |No                  |Yes                  |
+|Language            |SQL query language  |JSON Query Language  |
+|Secondary index     |Yes                 |Yes                  |
+|Triggers            |Yes                 |Yes                  |
+|Foreign Keys        |Yes                 |No                   |
+|Concurrency         |Yes                 |yes                  |
+|XML Support         |Yes                 |No                   |
 
 <p align="center">
   <img src="assets/RDBMS_MongoDB_Mapping.jpg" alt="MongoDB & SQL Server" width="400px" />
