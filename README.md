@@ -292,7 +292,7 @@ JSON is formatted as name/value pairs. In JSON documents, field names and values
 |XML Support         |Yes                 |No                   |
 
 <p align="center">
-  <img src="assets/RDBMS_MongoDB_Mapping.jpg" alt="MongoDB & SQL Server" width="400px" />
+  <img src="assets/RDBMS_MongoDB_Mapping.jpg" alt="MongoDB & SQL Server" width="500px" />
 </p>
 
 <div align="right">
