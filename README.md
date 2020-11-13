@@ -167,6 +167,16 @@ db.persons.insert( { name: "Alex", age: "28" } )
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is Replication in Mongodb?***
+
+Replication exists primarily to offer data redundancy and high availability. It maintain the durability of data by keeping multiple copies or replicas of that data on physically isolated servers. Replication allows to increase data availability by creating multiple copies of data across servers. This is especially useful if a server crashes or hardware failure.
+
+With MongoDB, replication is achieved through a **Replica Set**. Writer operations are sent to the primary server (node), which applies the operations across secondary servers, replicating the data. If the primary server fails (through a crash or system failure), one of the secondary servers takes over and becomes the new primary node via election. If that server comes back online, it becomes a secondary once it fully recovers, aiding the new primary node.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is Replica Set in MongoDB?***
 
 It is a group of mongo processes that maintain same data set. Replica sets provide redundancy and high availability, and are the basis for all production deployments. A replica set contains a primary node and multiple secondary nodes.
@@ -252,14 +262,6 @@ JSON is formatted as name/value pairs. In JSON documents, field names and values
   "tags": [ "college-ruled", "perforated"]
 }
 ```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***What is Replication in Mongodb?***
-
-Replication is the process of synchronizing data across multiple servers. Replication provides redundancy and increases data availability. With multiple copies of data on different database servers, replication protects a database from the loss of a single server. Replication also allows you to recover from hardware failure and service interruptions.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
