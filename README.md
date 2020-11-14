@@ -299,14 +299,6 @@ JSON is formatted as name/value pairs. In JSON documents, field names and values
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Compare SQL databases and MongoDB at a high level?***
-
-SQL databases store data in form of tables, rows, columns and records. This data is stored in a pre-defined data model which is not very much flexible for today's real-world highly growing applications. MongoDB in contrast uses a flexible structure which can be easily modified and extended.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***Can you create an index on an array field in MongoDB?***
 
 Yes. An array field can be indexed in MongoDB. In this case, MongoDB would index each value of the array.
