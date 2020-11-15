@@ -312,7 +312,6 @@ Yes. An array field can be indexed in MongoDB. In this case, MongoDB would index
 #### Q. ***How is MongoDB better than other SQL databases?*** 
 #### Q. ***Does MongoDB support ACID transaction management and locking functionalities?*** 
 #### Q. ***How can I combine data from multiple collections into one collection?*** 
-#### Q. ***What does MongoDB not being ACID compliant really mean?*** 
 #### Q. ***Find objects between two dates MongoDB?*** 
 #### Q. ***How to query MongoDB with "like"?*** 
 #### Q. ***Should I normalize my data before storing it in MongoDB?*** 
