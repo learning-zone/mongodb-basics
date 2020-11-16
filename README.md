@@ -40,6 +40,27 @@ Connecting MongoDB Cloud using MongoDB Compass
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are Indexes in MongoDB?***
+
+Indexes support the efficient execution of queries in MongoDB. Without indexes, MongoDB must perform a collection scan, i.e. scan every document in a collection, to select those documents that match the query statement. If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents it must inspect.
+
+Indexes are special data structures that store a small portion of the collection\'s data set in an easy to traverse form. The index stores the value of a specific field or set of fields, ordered by the value of the field. The ordering of the index entries supports efficient equality matches and range-based query operations. In addition, MongoDB can return sorted results by using the ordering in the index.
+
+**Example**
+
+The `createIndex()` method only creates an index if an index of the same specification does not already exist. The following example ( using Node.js ) creates a single key descending index on the name field:
+
+```js
+collection.createIndex( { name : -1 }, function(err, result) {
+   console.log(result);
+   callback(result);
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How many indexes does MongoDB create by default for a new collection?***
 
 By default MongoDB creates a unique index on the `_id` field during the creation of a collection. The `_id` index prevents clients from inserting two documents with the same value for the `_id` field.
@@ -48,11 +69,9 @@ By default MongoDB creates a unique index on the `_id` field during the creation
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are Indexes in MongoDB?***
+## Q. ***Can you create an index on an array field in MongoDB?***
 
-Indexes support the efficient execution of queries in MongoDB. Without indexes, MongoDB must perform a collection scan, i.e. scan every document in a collection, to select those documents that match the query statement. If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents it must inspect.
-
-Indexes are special data structures that store a small portion of the collection\'s data set in an easy to traverse form. The index stores the value of a specific field or set of fields, ordered by the value of the field. The ordering of the index entries supports efficient equality matches and range-based query operations. In addition, MongoDB can return sorted results by using the ordering in the index.
+Yes. An array field can be indexed in MongoDB. In this case, MongoDB would index each value of the array.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -294,14 +313,6 @@ JSON is formatted as name/value pairs. In JSON documents, field names and values
 <p align="center">
   <img src="assets/RDBMS_MongoDB_Mapping.jpg" alt="MongoDB & SQL Server" width="500px" />
 </p>
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Can you create an index on an array field in MongoDB?***
-
-Yes. An array field can be indexed in MongoDB. In this case, MongoDB would index each value of the array.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
