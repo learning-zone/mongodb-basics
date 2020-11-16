@@ -61,6 +61,147 @@ collection.createIndex( { name : -1 }, function(err, result) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What are the types of Indexes available in MongoDB?***
+
+MongoDB supports the following types of the index for running a query.
+
+**1. Single Field Index**
+
+MongoDB supports user-defined indexes like single field index. A single field index is used to create an index on the single field of a document. With single field index, MongoDB can traverse in ascending and descending order. By default, each collection has a single field index automatically created on the `_id` field, the primary key.
+
+**Example**
+
+```js
+{
+  "_id": 1,
+  "person": { name: "Alex", surname: "K" },
+  "age": 29,
+  "city": "New York"
+}
+```
+
+We can define, a single field index on the age field.
+
+```js
+db.people.createIndex( {age : 1} ) // creates an ascending index
+
+db.people.createIndex( {age : -1} ) // creates a descending index
+```
+
+With this kind of index we can improve all the queries that find documents with a condition and the age field, like the following:
+
+```js
+db.people.find( { age : 20 } )
+db.people.find( { name : "Alex", age : 30 } )
+db.people.find( { age : { $gt : 25} } )
+```
+
+**2. Compound Index**
+
+A compound index is an index on multiple fields. Using the same people collection we can create a compound index combining the city and age field.
+
+```js
+db.people.createIndex( {city: 1, age: 1, person.surname: 1  } )
+```
+
+In this case, we have created a compound index where the first entry is the value of the city field, the second is the value of the age field, and the third is the person.name. All the fields here are defined in ascending order.
+
+Queries such as the following can benefit from the index:
+
+```js
+db.people.find( { city: "Miami", age: { $gt: 50 } } )
+db.people.find( { city: "Boston" } )
+db.people.find( { city: "Atlanta", age: {$lt: 25}, "person.surname": "Green" } )
+```
+
+**3. Multikey Index**
+
+This is the index type for arrays. When creating an index on an array, MongoDB will create an index entry for every element.
+
+**Example**
+
+```js
+{
+   "_id": 1,
+   "person": { name: "John", surname: "Brown" },
+   "age": 34,
+   "city": "New York",
+   "hobbies": [ "music", "gardening", "skiing" ]
+ }
+```
+
+The multikey index can be created as:
+
+```js
+db.people.createIndex( { hobbies: 1} )
+```
+
+Queries such as these next examples will use the index:
+
+```js
+db.people.find( { hobbies: "music" } )
+db.people.find( { hobbies: "music", hobbies: "gardening" } )
+```
+
+**4. Geospatial Index**
+
+GeoIndexes are a special index type that allows a search based on location, distance from a point and many other different features. To query geospatial data, MongoDB supports two types of indexes – `2d indexes` and `2d sphere indexes`. 2d indexes use planar geometry when returning results and 2dsphere indexes use spherical geometry to return results.
+
+**5. Text Index**
+
+It is another type of index that is supported by MongoDB. Text index supports searching for string content in a collection. These index types do not store language-specific stop words (e.g. “the”, “a”, “or”). Text indexes restrict the words in a collection to only store root words.
+
+**Example**
+
+Let\'s insert some sample documents.
+
+```js
+var entries = db.people("blogs").entries;
+entries.insert( {
+  title : "my blog post",
+  text : "i am writing a blog. yay",
+  site: "home",
+  language: "english" });
+entries.insert( {
+  title : "my 2nd post",
+  text : "this is a new blog i am typing. yay",
+  site: "work",
+  language: "english" });
+entries.insert( {
+  title : "knives are Fun",
+  text : "this is a new blog i am writing. yay",
+  site: "home",
+  language: "english" });
+```
+
+Let\'s define create the text index.
+
+```js
+var entries = db.people("blogs").entries;
+entries.ensureIndex({title: "text", text: "text"}, { weights: {
+    title: 10,
+    text: 5
+  },
+  name: "TextIndex",
+  default_language: "english",
+  language_override: "language" });
+```
+
+Queries such as these next examples will use the index:
+
+```js
+var entries = db.people("blogs").entries;
+entries.find({$text: {$search: "blog"}, site: "home"})
+```
+
+**6. Hashed Index**
+
+MongoDB supports hash-based sharding and provides hashed indexes. These indexes are the hashes of the field value. Shards use hashed indexes and create a hash according to the field value to spread the writes across the sharded instances.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How many indexes does MongoDB create by default for a new collection?***
 
 By default MongoDB creates a unique index on the `_id` field during the creation of a collection. The `_id` index prevents clients from inserting two documents with the same value for the `_id` field.
