@@ -202,6 +202,12 @@ MongoDB supports hash-based sharding and provides hashed indexes. These indexes 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Explain Index Properties in MongoDB?***
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How many indexes does MongoDB create by default for a new collection?***
 
 By default MongoDB creates a unique index on the `_id` field during the creation of a collection. The `_id` index prevents clients from inserting two documents with the same value for the `_id` field.
