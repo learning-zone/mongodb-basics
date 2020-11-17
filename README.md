@@ -204,6 +204,85 @@ MongoDB supports hash-based sharding and provides hashed indexes. These indexes 
 
 ## Q. ***Explain Index Properties in MongoDB?***
 
+**1. TTL Indexes**
+
+TTL ( **Time To Live** ) is a special option that we can apply only to a single field index to permit the automatic deletion of documents after a certain time.
+
+During index creation, we can define an expiration time. After that time, all the documents that are older than the expiration time will be removed from the collection. This kind of feature is very useful when we are dealing with data that don\'t need to persist in the database ( eg. `session data` ).
+
+**Example**
+
+```js
+db.sessionlog.createIndex( { "lastUpdateTime": 1 }, { expireAfterSeconds: 1800 } )
+```
+
+In this case, MongoDB will drop the documents from the collection automatically once half an hour (1800 seconds) has passed since the value in **lastUpdateTime** field.
+
+**Restrictions**
+
+* Only single field indexes can have the TTL option
+* the `_id` single field index cannot support the TTL option
+* the indexed field must be a date type
+* a capped collection cannot have a TTL index
+
+**2. Partial indexes**
+
+A partial index is an index that contains only a subset of the values based on a filter rule. They are useful in cases where:
+
+* The index size can be reduced
+* We want to index the most relevant and used values in the query conditions
+* We want to index the most selective values of a field
+
+**Example**
+
+```js
+db.people.createIndex(
+   { "city": 1, "person.surname": 1 },
+   { partialFilterExpression: { age : { $lt: 30 } } }
+)
+```
+
+We have created a compound index on city and person.surname but only for the documents with age less than 30.
+In order for the partial index to be used the queries must contain a condition on the age field.
+
+```js
+db.people.find( { city: "New Tork", age: { $eq: 20} } )
+```
+
+**3. Sparse indexes**
+
+Sparse indexes are a subset of partial indexes. A sparse index only contains elements for the documents that have the indexed field, even if it is null.
+
+Since MongoDB is a schemaless database, the documents in a collection can have different fields, so an indexed field may not be present in some of them.
+
+**Example**
+
+To create such an index use the sparse option:
+
+```js
+db.people.createIndex( { city: 1 }, { sparse: true } )
+```
+
+In this case, we are assuming there could be documents in the collection with the field city missing. Sparse indexes are based on the existence of a field in the documents and are useful to reduce the size of the index.
+
+**4. Unique indexes**
+
+MongoDB can create an index as unique. An index defined this way cannot contain duplicate entries.
+
+**Example**
+
+```js
+db.people.createIndex( { city: 1 }, { unique: true } )
+```
+
+Uniqueness can be defined for compound indexes too.
+
+```js
+db.people.createIndex( { city: 1, person.surname: 1}, { unique: true } )
+```
+
+By default, the index on `_id` is automatically created as unique.
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
