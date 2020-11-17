@@ -260,6 +260,37 @@ db.posts.find({ views: { $lt: 7 } })
 db.posts.find({ views: { $lte: 7 } })
 ```
 
+### List of the indexes in a collection
+
+```js
+db.restaurants.getIndexes()
+[
+	{
+		"v" : 2,
+		"key" : {
+			"_id" : 1
+		},
+		"name" : "_id_",
+		"ns" : "test.restaurants"
+	},
+	{
+		"v" : 2,
+		"key" : {
+			"borough" : 1
+		},
+		"name" : "borough_1",
+		"ns" : "test.restaurants"
+	}
+]
+```
+
+### Drop an existing index
+
+```js
+db.restaurants.dropIndex("cuisine_1_grades.score_1")
+{ "nIndexesWas" : 4, "ok" : 1 }
+```
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
