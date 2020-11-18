@@ -544,7 +544,69 @@ JSON is formatted as name/value pairs. In JSON documents, field names and values
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How can you achieve transaction and locking in MongoDB?*** 
+## Q. ***How can you achieve transaction and locking in MongoDB?***
+
+In MongoDB (4.2), an operation on a single document is atomic. For situations that require atomicity of reads and writes to multiple documents (in a single or multiple collections), MongoDB supports multi-document transactions. With distributed transactions, transactions can be used across multiple operations, collections, databases, documents, and shards.
+
+MongoDB allows multiple clients to read and write the same data. In order to ensure consistency, it uses locking and other concurrency control measures to prevent multiple clients from modifying the same piece of data simultaneously.
+
+MongoDB uses **multi-granularity locking** that allows operations to lock at the global, database or collection level, and allows for individual storage engines to implement their own concurrency control below the collection level (e.g., at the document-level in WiredTiger). MongoDB uses reader-writer locks that allow concurrent readers shared access to a resource, such as a database or collection.
+
+The lock modes are represented as follows:
+
+|Lock Mode   |Description                 |
+|------------|----------------------------|
+|R           |Represents Shared (S) lock. |
+|W           |Represents Exclusive (X) lock.|
+|r           |Represents Intent Shared (IS) lock.|
+|w           |Represents Intent Exclusive (IX) lock.|
+
+**Example:**
+
+The following example highlights the key components of the transactions API
+
+```js
+const client = new MongoClient(uri);
+await client.connect();
+
+// Prereq: Create collections.
+
+await client.db('mydb1').collection('foo').insertOne({ abc: 0 }, { w: 'majority' });
+
+await client.db('mydb2').collection('bar').insertOne({ xyz: 0 }, { w: 'majority' });
+
+// Step 1: Start a Client Session
+const session = client.startSession();
+
+// Step 2: Optional. Define options to use for the transaction
+const transactionOptions = {
+  readPreference: 'primary',
+  readConcern: { level: 'local' },
+  writeConcern: { w: 'majority' }
+};
+
+// Step 3: Use withTransaction to start a transaction, execute the callback, and commit (or abort on error)
+// Note: The callback for withTransaction MUST be async and/or return a Promise.
+try {
+  await session.withTransaction(async () => {
+    const coll1 = client.db('mydb1').collection('foo');
+    const coll2 = client.db('mydb2').collection('bar');
+
+    // Important:: You must pass the session to the operations
+
+    await coll1.insertOne({ abc: 1 }, { session });
+    await coll2.insertOne({ xyz: 999 }, { session });
+  }, transactionOptions);
+} finally {
+   await session.endSession();
+   await client.close();
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What are NoSQL databases? What are the different types of NoSQL databases?*** 
 #### Q. ***How is MongoDB better than other SQL databases?*** 
 #### Q. ***Does MongoDB support ACID transaction management and locking functionalities?*** 
