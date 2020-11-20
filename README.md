@@ -28,17 +28,17 @@ Documents can be stored and retrieved in a form that is much closer to the data 
 **Example:**  Amazon SimpleDB, CouchDB, MongoDB, Riak, Lotus Notes are popular Document originated DBMS systems.
 
 <p align="center">
-  <img src="assets/document-database.png" alt="MongoDB & SQL Server" width="500px" />
+  <img src="assets/document-database.png" alt="Document Databases" width="300px" />
 </p>
 
-**2. Key-value stores**
+**2. Key-value Stores**
 
 Data is stored in key/value pairs. It is designed in such a way to handle lots of data and heavy load. Key-value pair storage databases store data as a hash table where each key is unique, and the value can be a JSON, BLOB(Binary Large Objects), string, etc.
 
 **Example:** of key-value stores are Redis, Voldemort, Riak, and Amazon\'s DynamoDB.
 
 <p align="center">
-  <img src="assets/key-value-database.png" alt="MongoDB & SQL Server" width="500px" />
+  <img src="assets/key-value-database.png" alt="Key-value Stores" width="300px" />
 </p>
 
 **3. Column-Oriented Databases**
@@ -50,7 +50,7 @@ They deliver high performance on aggregation queries like SUM, COUNT, AVG, MIN, 
 **Example:** Column-based NoSQL databases are widely used to manage data warehouses, business intelligence, CRM, Library card catalogs, HBase, Cassandra, HBase, Hypertable are examples of a column-based database.
 
 <p align="center">
-  <img src="assets/column-database.png" alt="MongoDB & SQL Server" width="500px" />
+  <img src="assets/column-database.png" alt="Column-Oriented Databases" width="300px" />
 </p>
 
 **4. Graph Databases**
@@ -64,7 +64,7 @@ Graph base databases mostly used for social networks, logistics, spatial data.
 **Example:** Neo4J, Infinite Graph, OrientDB, FlockDB are some popular graph-based databases.
 
 <p align="center">
-  <img src="assets/graph-database.png" alt="MongoDB & SQL Server" width="500px" />
+  <img src="assets/graph-database.png" alt="Graph Databases" width="300px" />
 </p>
 
 <div align="right">
