@@ -212,7 +212,7 @@ GeoIndexes are a special index type that allows a search based on location, dist
 
 **5. Text Index**
 
-It is another type of index that is supported by MongoDB. Text index supports searching for string content in a collection. These index types do not store language-specific stop words (e.g. “the”, “a”, “or”). Text indexes restrict the words in a collection to only store root words.
+It is another type of index that is supported by MongoDB. Text index supports searching for string content in a collection. These index types do not store language-specific stop words (e.g. "the", "a", "or"). Text indexes restrict the words in a collection to only store root words.
 
 **Example**
 
@@ -556,7 +556,7 @@ You should consider embedding documents for:
 
 In MongoDB, Data is stored in BSON documents (short for `Bin­ary JSON`). These documents are stored in MongoDB in JSON (JavaScript Object Notation) format. JSON documents support embedded fields, so related data and lists of data can be stored with the document instead of an external table. Documents contain one or more fields, and each field contains a value of a specific data type, including arrays, binary data and sub-documents. Documents that tend to share a similar structure are organized as collections.
 
-JSON is formatted as name/value pairs. In JSON documents, field names and values are separated by a colon, field name and value pairs are separated by commas, and sets of fields are encapsulated in “curly braces” ({}).
+JSON is formatted as name/value pairs. In JSON documents, field names and values are separated by a colon, field name and value pairs are separated by commas, and sets of fields are encapsulated in "curly braces" ({}).
 
 **Example:**
 
@@ -670,49 +670,99 @@ try {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How is MongoDB better than other SQL databases?*** 
-#### Q. ***Does MongoDB support ACID transaction management and locking functionalities?*** 
-#### Q. ***How can I combine data from multiple collections into one collection?*** 
-#### Q. ***Find objects between two dates MongoDB?*** 
-#### Q. ***How to query MongoDB with "like"?*** 
-#### Q. ***Should I normalize my data before storing it in MongoDB?*** 
-#### Q. ***Is there an "upsert" option in the mongodb insert command?*** 
-#### Q. ***What is oplog?*** 
-#### Q. ***How can you achieve primary key - foreign key relationships in MongoDB?*** 
-#### Q. ***Does MongoDB pushes the writes to disk immediately or lazily?*** 
-#### Q. ***If you remove a document from database, does MongoDB remove it from disk?*** 
-#### Q. ***Can one MongoDB operation lock more than one databases?***  
-#### Q. ***Explain the structure of ObjectID in MongoDB?*** 
-#### Q. ***What is the difference b/w MongoDB and CouchDB?*** 
-#### Q. ***What is the difference between MongoDB and MySQL?*** 
-#### Q. ***What is a covered query in MongoDB?*** 
+## Q. ***When to Use MongoDB Rather than MySQL?***
+
+**1. MongoDB**
+
+MongoDB is one of the most popular document-oriented databases under the banner of NoSQL database. It employs the format of key-value pairs, here called document store. Document stores in MongoDB are created is stored in BSON files which are, in fact, a little-modified version of JSON files and hence all JS are supported.
+
+It offers greater efficiency and reliability which in turn can meet your storage capacity and speed demands. The schema-free implementation of MongoDB eliminates the prerequisites of defining a fixed structure. These models allow hierarchical relationships representation and facilitate the ability to change the structure of the record.
+
+**Pros**
+
+* MongoDB has a lower latency per query & spends less CPU time per query because it is doing a lot less work (e.g. no joins, transactions). As a result, it can handle a higher load in terms of queries per second.
+* MongoDB is easier to shard (use in a cluster) because it doesn\'t have to worry about transactions and consistency.
+* MongoDB has a faster write speed because it does not have to worry about transactions or rollbacks (and thus does not have to worry about locking).
+* It supports many Features like automatic repair, easier data distribution, and simpler data models make administration and tuning requirements lesser in NoSQL.
+* NoSQL databases are cheap and open source.
+* NoSQL database support caching in system memory so it increases data output performance.
+
+**Cons**
+
+* MongoDB does not support transactions.
+* In general, MongoDB creates more work (e.g. more CPU cost) for the client server. For example, to join data one has to issue multiple queries and do the join on the client.
+* No Stored Procedures in mongo dB (NoSQL database).
+
+**Reasons to Use a NoSQL Database**
+
+* **Storing large volumes of data without structure**: A NoSQL database doesn\'t limit storable data types. Plus, you can add new types as business needs change.
+* **Using cloud computing and storage**: Cloud-based storage is a great solution, but it requires data to be easily spread across multiple servers for scaling. Using affordable hardware on-site for testing and then for production in the cloud is what NoSQL databases are designed for.
+* **Rapid development**: If you are developing using modern agile methodologies, a relational database will slow you down. A NoSQL database doesn\'t require the level of preparation typically needed for relational databases.
+
+**2. MySQL**
+
+MySQL is a popular open-source relational database management system (RDBMS) that is developed, distributed and supported by Oracle Corporation. MySQL stores data in tables and uses structured query language (SQL) for database access. It uses Structured Query Language SQL to access and transfer the data and commands such as 'SELECT', 'UPDATE', 'INSERT' and 'DELETE' to manage it.
+
+Related information is stored in different tables but the concept of JOIN operations simplifies the process of correlating it and performing queries across multiple tables and minimize the chances of data duplication. It follows the ACID (Atomic, Consistent, Isolated and Durable) model. This means that once a transaction is complete, the data remains consistent and stable on the disc which may include distinct multiple memory locations.
+
+**Pros**
+
+* SQL databases are table based databases.
+* Data store in rows and columns
+* Each row contains a unique instance of data for the categories defined by the columns.
+* Provide facility primary key, to uniquely identify the rows.
+
+**Cons**
+
+* Users have to scale relational database on powerful servers that are expensive and difficult to handle. To scale relational database, it has to be distributed on to multiple servers. Handling tables across different servers is difficult.
+* In SQL server\'s data has to fit into tables anyhow. If your data doesn\'t fit into tables, then you need to design your database structure that will be complex and again difficult to handle.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+#### Q. ***Does MongoDB support ACID transaction management and locking functionalities?***
+#### Q. ***How can I combine data from multiple collections into one collection?***
+#### Q. ***Find objects between two dates MongoDB?***
+#### Q. ***How to query MongoDB with "like"?***
+#### Q. ***Should I normalize my data before storing it in MongoDB?***
+#### Q. ***Is there an "upsert" option in the mongodb insert command?***
+#### Q. ***What is oplog?***
+#### Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
+#### Q. ***Does MongoDB pushes the writes to disk immediately or lazily?***
+#### Q. ***If you remove a document from database, does MongoDB remove it from disk?***
+#### Q. ***Can one MongoDB operation lock more than one databases?*** 
+#### Q. ***Explain the structure of ObjectID in MongoDB?***
+#### Q. ***What is the difference b/w MongoDB and CouchDB?***
+#### Q. ***What is the difference between MongoDB and MySQL?***
+#### Q. ***What is a covered query in MongoDB?***
 #### Q. ***Mention the command to check whether you are on the master server or not?***
-#### Q. ***Why MongoDB is not preferred over a 32-bit system?*** 
-#### Q. ***What do you understand by NoSQL databases?***  
-#### Q. ***Why are MongoDB data files large in size?*** 
-#### Q. ***What is Sharding in MongoDB?*** 
-#### Q. ***What is Aggregation in MongoDB?*** 
-#### Q. ***How can you isolate your cursors from intervening with the write operations?*** 
-#### Q. ***At what interval does MongoDB write updates to the disk?*** 
+#### Q. ***Why MongoDB is not preferred over a 32-bit system?***
+#### Q. ***What do you understand by NoSQL databases?*** 
+#### Q. ***Why are MongoDB data files large in size?***
+#### Q. ***What is Sharding in MongoDB?***
+#### Q. ***What is Aggregation in MongoDB?***
+#### Q. ***How can you isolate your cursors from intervening with the write operations?***
+#### Q. ***At what interval does MongoDB write updates to the disk?***
 #### Q. ***By default, MongoDB writes and reads data from both primary and secondary replica sets. True or False.?***
 #### Q. ***Mention the command to list all the indexes on a particular collection?***
-#### Q. ***What happens if an index does not fit into RAM?*** 
-#### Q. ***Does MongoDB provide a facility to do text searches?*** 
-#### Q. ***Where can I run MongoDB?*** 
-#### Q. ***How to remove a field completely from a MongoDB document?*** 
-#### Q. ***How does Journaling work in MongoDB?*** 
-#### Q. ***Why is a covered query important?*** 
-#### Q. ***How does MongoDB provide concurrency?*** 
-#### Q. ***What are Primary and Secondary Replica sets?*** 
-#### Q. ***How replication works in MongoDB?*** 
-#### Q. ***What are alternatives to MongoDB?*** 
-#### Q. ***Update MongoDB field using value of another field?*** 
-#### Q. ***How does MongoDB ensure high availability?*** 
-#### Q. ***Is MongoDB schema-less?*** 
-#### Q. ***What is the advantage of the backup features in Ops Manager versus traditional backup strategies?*** 
-#### Q. ***What is splitting in mongodb?*** 
+#### Q. ***What happens if an index does not fit into RAM?***
+#### Q. ***Does MongoDB provide a facility to do text searches?***
+#### Q. ***Where can I run MongoDB?***
+#### Q. ***How to remove a field completely from a MongoDB document?***
+#### Q. ***How does Journaling work in MongoDB?***
+#### Q. ***Why is a covered query important?***
+#### Q. ***How does MongoDB provide concurrency?***
+#### Q. ***What are Primary and Secondary Replica sets?***
+#### Q. ***How replication works in MongoDB?***
+#### Q. ***What are alternatives to MongoDB?***
+#### Q. ***Update MongoDB field using value of another field?***
+#### Q. ***How does MongoDB ensure high availability?***
+#### Q. ***Is MongoDB schema-less?***
+#### Q. ***What is the advantage of the backup features in Ops Manager versus traditional backup strategies?***
+#### Q. ***What is splitting in mongodb?***
 #### Q. ***What is a Storage Engine in MongoDB?***
-#### Q. ***How to condense large volumes of data in Mongo?*** 
+#### Q. ***How to condense large volumes of data in Mongo?***
 #### Q. ***What is horizontal scalability?***
 #### Q. ***Is it possible to update MongoDB field using value of another field?***
 #### Q. ***How to check if a field contains a substring?***
