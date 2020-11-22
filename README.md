@@ -721,7 +721,7 @@ Related information is stored in different tables but the concept of JOIN operat
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Does MongoDB support ACID transaction management and locking functionalities?***
+## Q. ***How MongoDB supports ACID transactions and locking functionalities?***
 
 MongoDB is a document based  NoSQL database with a flexible schema. Transactions are not operations that should be executed for every write operation  since they incur a greater performance cost over a single document writes. With a document based structure and denormalized data model, there will be a minimized need for transactions. Since MongoDB allows document embedding, you don\'t necessarily need to use a transaction to meet a write operation.
 
