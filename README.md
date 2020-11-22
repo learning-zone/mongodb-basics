@@ -769,6 +769,20 @@ For the best database performance on the transaction, developers should consider
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***Explain limitations of MongoDB Transactions?***
+
+MongoDB transactions can exist only for relatively short time periods.  By default, a transaction must span no more than one minute of clock time.  This limitation results from the underlying MongoDB implementation. MongoDB uses MVCC, but unlike databases such as Oracle, the “older” versions of data are kept only in memory.
+
+1. You cannot create or drop a collection inside a transaction.
+2. Transactions cannot make writes to a capped collection
+3. Transactions take plenty of time to execute and somehow they can slow the performance of the database.
+4. Transaction size is limited to 16MB requiring one to split any that tends to exceed this size into smaller transactions.
+5. Subjecting a large number of documents to a transaction may exert excessive pressure on the WiredTiger engine and since it relies on the snapshot capability, there will be a retention of large unflushed operations in memory. This renders some performance cost on the database.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How can I combine data from multiple collections into one collection?***
 #### Q. ***Find objects between two dates MongoDB?***
 #### Q. ***How to query MongoDB with "like"?***
