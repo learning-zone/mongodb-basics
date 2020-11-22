@@ -722,6 +722,31 @@ Related information is stored in different tables but the concept of JOIN operat
 </div>
 
 #### Q. ***Does MongoDB support ACID transaction management and locking functionalities?***
+
+MongoDB is a document based  NoSQL database with a flexible schema. Transactions are not operations that should be executed for every write operation  since they incur a greater performance cost over a single document writes. With a document based structure and denormalized data model, there will be a minimized need for transactions. Since MongoDB allows document embedding, you don\'t necessarily need to use a transaction to meet a write operation.
+
+MongoDB version 4.0 provides **multi-document transaction** support for replica set deployments only and probably the version 4.2 will extend support for sharded deployments.
+
+**Example:** Multi-Document ACID Transactions in MongoDB
+
+These are multi-statement operations that need to be executed sequentially without affecting each other. For example below we can create two transactions, one to add a user and another to update a user with a field of age. 
+
+```js
+$session.startTransaction()
+
+   db.users.insert({_id:6, name “Ibrahim”})
+
+   db.users.updateOne({_id:3 , {$set:{age:50}}})
+
+session.commit_transaction()
+```
+
+Transactions can be applied to operations against multiple documents contained in one or many collection/database. Any changes due to document transaction do not impact performance for workloads not related or do not require them. Until the transaction is committed, uncommitted writes are neither replicated to the secondary nodes nor are they readable outside the transactions.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How can I combine data from multiple collections into one collection?***
 #### Q. ***Find objects between two dates MongoDB?***
 #### Q. ***How to query MongoDB with "like"?***
