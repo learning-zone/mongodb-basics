@@ -783,7 +783,30 @@ MongoDB transactions can exist only for relatively short time periods.  By defau
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How can I combine data from multiple collections into one collection?***
+## Q. ***How to combine data from multiple collections into one collection?***
+
+**$lookup**
+
+Performs a left outer join to an unsharded collection in the same database to filter in documents from the “joined” collection for processing. To each input document, the `$lookup` stage adds a new array field whose elements are the matching documents from the “joined” collection. The `$lookup` stage passes these reshaped documents to the next stage.
+
+**Syntax**
+
+```js
+{
+   $lookup:
+     {
+       from: <collection to join>,
+       localField: <field from the input documents>,
+       foreignField: <field from the documents of the "from" collection>,
+       as: <output array field>
+     }
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Find objects between two dates MongoDB?***
 #### Q. ***How to query MongoDB with "like"?***
 #### Q. ***Should I normalize my data before storing it in MongoDB?***
