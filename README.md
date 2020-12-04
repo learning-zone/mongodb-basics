@@ -807,7 +807,60 @@ Performs a left outer join to an unsharded collection in the same database to fi
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Find objects between two dates MongoDB?***
+## Q. ***Find objects between two dates MongoDB?***
+
+Operator `$gte` and `$lt` is used to find objects between two dates in MongoDB.
+
+**Example**: Creating a collection
+
+```js
+>db.order.insert({"OrderId":1,"OrderAddrees":"US","OrderDateTime":ISODate("2020-02-19")};
+WriteResult({ "nInserted" : 1 })
+
+>db.order.insert({"OrderId":2,"OrderAddrees":"UK","OrderDateTime":ISODate("2020-02-26")};
+WriteResult({ "nInserted" : 1 })
+```
+
+Display all documents from the collection using `find()` method.
+
+```js
+> db.order.find().pretty();
+
+// Output
+{
+   "_id" : ObjectId("5c6c072068174aae23f5ef57"),
+   "OrderId" : 1,
+   "OrderAddrees" : "US",
+   "OrderDateTime" : ISODate("2020-02-19T00:00:00Z")
+}
+{
+   "_id" : ObjectId("5c6c073568174aae23f5ef58"),
+   "OrderId" : 2,
+   "OrderAddrees" : "UK",
+   "OrderDateTime" : ISODate("2020-02-26T00:00:00Z")
+}
+```
+
+Here is the query to find objects between two dates:
+
+```js
+> db.order.find({"OrderDateTime":{ $gte:ISODate("2020-02-10"), $lt:ISODate("2020-02-21") }
+}).pretty();
+
+
+// Output
+{
+   "_id" : ObjectId("5c6c072068174aae23f5ef57"),
+   "OrderId" : 1,
+   "OrderAddrees" : "US",
+   "OrderDateTime" : ISODate("2020-02-19T00:00:00Z")
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to query MongoDB with "like"?***
 #### Q. ***Should I normalize my data before storing it in MongoDB?***
 #### Q. ***Is there an "upsert" option in the mongodb insert command?***
