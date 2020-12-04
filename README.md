@@ -861,7 +861,21 @@ Here is the query to find objects between two dates:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to query MongoDB with "like"?***
+## Q. ***How to query MongoDB with "like"?***
+
+```js
+db.users.insert({name: 'paulo'})
+db.users.insert({name: 'patric'})
+db.users.insert({name: 'pedro'})
+
+db.users.find({name: /a/})  //like '%a%'
+db.users.find({name: /^pa/}) //like 'pa%'
+db.users.find({name: /ro$/}) //like '%ro'
+```
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Should I normalize my data before storing it in MongoDB?***
 #### Q. ***Is there an "upsert" option in the mongodb insert command?***
 #### Q. ***What is oplog?***
