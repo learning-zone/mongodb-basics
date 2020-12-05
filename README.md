@@ -872,11 +872,44 @@ db.users.find({name: /a/})  //like '%a%'
 db.users.find({name: /^pa/}) //like 'pa%'
 db.users.find({name: /ro$/}) //like '%ro'
 ```
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Should I normalize my data before storing it in MongoDB?***
+## Q. ***Should I normalize my data before storing it in MongoDB?***
+
+Data used by multiple documents can either be embedded (denormalized) or referenced (normalized). Normalization, which is increasing the complexity of the schema by splitting tables into multiple smaller ones to reduce the data redundancy( 1NF, 2NF, 3NF).
+
+But Mongo follows the exact opposite way of what we do with SQL. In MongoDB, data normalization is not requried. Indeed we need to de-normalize and fit it into a collection of multiple documents.
+
+**Example:** Let\'s say we have three tables
+
+* Table - 1 : ColumnA, ColumnB (primary key)
+* Table - 2 : ColumnC (Foreign key), ColumnD (primary key)
+* Table - 3 : ColumnE (foreign key), ColumnF
+
+In this case, mongoDB document structure should be as follows.
+
+```js
+{
+    ColumnA : ValueA,
+    ColumnB : ValueB,
+    Subset1 : [{
+       ColumnC : ValueC,
+       ColumnD : ValueD,
+       Subset2 : [{
+           ColumnE : ValueE,
+           ColumnF : ValueF
+       }]
+    }]
+}
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Is there an "upsert" option in the mongodb insert command?***
 #### Q. ***What is oplog?***
 #### Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
