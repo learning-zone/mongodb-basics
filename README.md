@@ -910,6 +910,40 @@ In this case, mongoDB document structure should be as follows.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***What is upsert operation in MongoDB?***
+
+Upsert operation in MongoDB is utilized to save document into collection. If document matches query criteria then it will perform update operation otherwise it will insert a new document into collection.
+
+Upsert operation is useful while importing data from external source which will update existing documents if matched otherwise it will insert new documents into collection.
+
+**Example:** Upsert option set for update
+
+This operation first searches for the document if not present then inserts the new document into the database.
+
+```js
+
+> db.car.update(
+...    { name: "Qualis" },
+...    {
+...       name: "Qualis",
+...       speed: 50
+...    },
+...    { upsert: true }
+... )
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : ObjectId("548d3a955a5072e76925dc1c")
+})
+```
+
+The car with the name Qualis is checked for existence and if not, a document with car name "Qualis" and speed 50 is inserted into the database. The nUpserted with value "1" indicates a new document is inserted.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Is there an "upsert" option in the mongodb insert command?***
 #### Q. ***What is oplog?***
 #### Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
