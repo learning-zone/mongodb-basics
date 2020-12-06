@@ -944,7 +944,14 @@ The car with the name Qualis is checked for existence and if not, a document wit
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Is there an "upsert" option in the mongodb insert command?***
+## Q. ***Is there an "upsert" option in the mongodb insert command?***
+
+The `db.collection.insert()` provides no upsert possibility. Instead, mongo insert inserts a new document into a collection. Upsert is only possible using `db.collection.update()` and `db.collection.save()`.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is oplog?***
 #### Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
 #### Q. ***Does MongoDB pushes the writes to disk immediately or lazily?***
