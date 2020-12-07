@@ -952,7 +952,27 @@ The `db.collection.insert()` provides no upsert possibility. Instead, mongo inse
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is oplog?***
+## Q. ***What is oplog?***
+
+The OpLog (Operations Log) is a special capped collection that keeps a rolling record of all operations that modify the data stored in databases.
+
+MongoDB applies database operations on the primary and then records the operations on the primary\'s oplog. The secondary members then copy and apply these operations in an asynchronous process. All replica set members contain a copy of the oplog, in the **local.oplog.rs** collection, which allows them to maintain the current state of the database.
+
+Each operation in the oplog is idempotent. That is, oplog operations produce the same results whether applied once or multiple times to the target dataset.
+
+**Example:** Querying The OpLog
+
+```js
+MongoDB shell version: 2.0.4
+connecting to: mongodb:27017/test
+PRIMARY> use local
+PRIMARY> db.oplog.rs.find()
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
 #### Q. ***Does MongoDB pushes the writes to disk immediately or lazily?***
 #### Q. ***If you remove a document from database, does MongoDB remove it from disk?***
