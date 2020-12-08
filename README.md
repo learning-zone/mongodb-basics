@@ -542,7 +542,7 @@ Embedded documents are particularly useful when a **one-to-many** relationship e
 
 ## Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
 
-The primary key-foreign key relationship can be achieved by embedding one document inside the another. As an example, a department document can have its employee document(s)
+The primary key-foreign key relationship can be achieved by embedding one document inside the another. As an example, a department document can have its employee document(s).
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
