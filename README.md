@@ -540,6 +540,14 @@ Embedded documents are particularly useful when a **one-to-many** relationship e
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
+
+The primary key-foreign key relationship can be achieved by embedding one document inside the another. As an example, a department document can have its employee document(s)
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***When should we embed one document within another in MongoDB?***
 
 You should consider embedding documents for:
@@ -973,7 +981,6 @@ PRIMARY> db.oplog.rs.find()
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
 #### Q. ***Does MongoDB pushes the writes to disk immediately or lazily?***
 #### Q. ***If you remove a document from database, does MongoDB remove it from disk?***
 #### Q. ***Can one MongoDB operation lock more than one databases?*** 
