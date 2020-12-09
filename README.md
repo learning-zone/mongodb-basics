@@ -982,6 +982,13 @@ PRIMARY> db.oplog.rs.find()
 </div>
 
 #### Q. ***Does MongoDB pushes the writes to disk immediately or lazily?***
+
+MongoDB pushes the data to disk lazily. It updates the immediately written to the journal but writing the data from journal to disk happens lazily.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***If you remove a document from database, does MongoDB remove it from disk?***
 #### Q. ***Can one MongoDB operation lock more than one databases?*** 
 #### Q. ***Explain the structure of ObjectID in MongoDB?***
