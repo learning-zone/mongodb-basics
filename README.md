@@ -989,7 +989,44 @@ MongoDB pushes the data to disk lazily. It updates the immediately written to th
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***If you remove a document from database, does MongoDB remove it from disk?***
+## Q. ***How to perform a delete operation in MongoDB?***
+
+MongoDB\'s `db.collection.deleteMany()` and `db.collection.deleteOne()` method is used to delete documents from the collection. Delete operations do not drop indexes, even if deleting all documents from a collection. All write operations in MongoDB are atomic on the level of a single document.
+
+**Example:**
+
+```js
+db.inventory.insertMany( [
+   { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+   { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "P" },
+   { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+   { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+   { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" },
+] );
+```
+
+**Delete Commands**
+
+```js
+db.inventory.deleteMany({}) // Delete All Documents
+
+db.inventory.deleteMany({ status : "A" }) // Delete All Documents that Match a Condition
+
+db.inventory.deleteOne( { status: "D" } ) // Delete Only One Document that Matches a Condition
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***If you remove a document from database, does MongoDB remove it from disk?***
+
+Yes. If you remove a document from database, MongoDB will remove it from disk too.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Can one MongoDB operation lock more than one databases?*** 
 #### Q. ***Explain the structure of ObjectID in MongoDB?***
 #### Q. ***What is the difference b/w MongoDB and CouchDB?***
