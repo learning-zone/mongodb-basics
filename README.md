@@ -1027,8 +1027,43 @@ Yes. If you remove a document from database, MongoDB will remove it from disk to
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Can one MongoDB operation lock more than one databases?*** 
-#### Q. ***Explain the structure of ObjectID in MongoDB?***
+## Q. ***Explain the structure of ObjectID in MongoDB?***
+
+The **ObjectId(`<hexadecimal>`)** class is the default primary key for a MongoDB document and is usually found in the `_id` field in an inserted document. It returns a new ObjectId value. The 12-byte ObjectId value consists of:
+
+* a 4-byte timestamp value, representing the ObjectId\'s creation, measured in seconds since the Unix epoch
+* a 5-byte random value
+* a 3-byte incrementing counter, initialized to a random value
+
+<p align="center">
+  <img src="assets/objectid.png" alt="Document Databases" />
+</p>
+
+While the BSON format itself is little-endian, the timestamp and counter values are big-endian, with the most significant bytes appearing first in the byte sequence.
+
+**Create ObjectId**
+
+To create a new objectID manually within the MongoDB we can declare `objectId()` as a method.
+
+```js
+> newObjectId = ObjectId();
+
+// Output
+ObjectId("5349b4ddd2781d08c09890f3")
+```
+
+**MongoDB provides three methods for ObjectId**
+
+|  Method               |Description             |
+|-----------------------|------------------------|
+|ObjectId.getTimestamp()|Returns the timestamp portion of the object as a Date.|
+|ObjectId.toString()    |Returns the JavaScript representation in the form of a string literal "ObjectId(...)".|
+|ObjectId.valueOf()     |Returns the representation of the object as a hexadecimal string.|
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the difference b/w MongoDB and CouchDB?***
 #### Q. ***What is the difference between MongoDB and MySQL?***
 #### Q. ***What is a covered query in MongoDB?***
