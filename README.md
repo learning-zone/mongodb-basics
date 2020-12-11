@@ -1064,7 +1064,37 @@ ObjectId("5349b4ddd2781d08c09890f3")
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is a covered query in MongoDB?***
+## Q. ***What is a covered query in MongoDB?***
+
+The MongoDB covered query is one which uses an index and does not have to examine any documents. An index will cover a query if it satisfies the following conditions:
+
+* All fields in a query are part of an index.
+* All fields returned in the results are of the same index.
+* no fields in the query are equal to null
+
+Since all the fields present in the query are part of an index, MongoDB matches the query conditions and returns the result using the same index without actually looking inside the documents.
+
+**Example:**
+
+A collection inventory has the following index on the type and item fields:
+
+```js
+db.inventory.createIndex( { type: 1, item: 1 } )
+```
+
+This index will cover the following operation which queries on the type and item fields and returns only the item field:
+
+```js
+db.inventory.find(
+   { type: "food", item:/^c/ },
+   { item: 1, _id: 0 }
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Mention the command to check whether you are on the master server or not?***
 #### Q. ***Why MongoDB is not preferred over a 32-bit system?***
 #### Q. ***What do you understand by NoSQL databases?*** 
