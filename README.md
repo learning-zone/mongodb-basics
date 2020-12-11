@@ -1064,8 +1064,6 @@ ObjectId("5349b4ddd2781d08c09890f3")
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is the difference b/w MongoDB and CouchDB?***
-#### Q. ***What is the difference between MongoDB and MySQL?***
 #### Q. ***What is a covered query in MongoDB?***
 #### Q. ***Mention the command to check whether you are on the master server or not?***
 #### Q. ***Why MongoDB is not preferred over a 32-bit system?***
