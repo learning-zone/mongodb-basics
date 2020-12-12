@@ -1095,7 +1095,6 @@ db.inventory.find(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Mention the command to check whether you are on the master server or not?***
 #### Q. ***Why MongoDB is not preferred over a 32-bit system?***
 #### Q. ***What do you understand by NoSQL databases?*** 
 #### Q. ***Why are MongoDB data files large in size?***
