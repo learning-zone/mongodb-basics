@@ -1103,7 +1103,6 @@ When running a 32-bit system build of MongoDB, the total storage size for the se
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What do you understand by NoSQL databases?*** 
 #### Q. ***Why are MongoDB data files large in size?***
 #### Q. ***What is Sharding in MongoDB?***
 #### Q. ***What is Aggregation in MongoDB?***
