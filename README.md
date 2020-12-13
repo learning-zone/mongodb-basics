@@ -1096,6 +1096,13 @@ db.inventory.find(
 </div>
 
 #### Q. ***Why MongoDB is not preferred over a 32-bit system?***
+
+When running a 32-bit system build of MongoDB, the total storage size for the server, including data and indexes, is 2 gigabytes. The reason for this is that the MongoDB storage engine uses memory-mapped files for performance.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What do you understand by NoSQL databases?*** 
 #### Q. ***Why are MongoDB data files large in size?***
 #### Q. ***What is Sharding in MongoDB?***
