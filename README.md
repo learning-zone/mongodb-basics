@@ -28,7 +28,7 @@ Documents can be stored and retrieved in a form that is much closer to the data 
 **Example:**  Amazon SimpleDB, CouchDB, MongoDB, Riak, Lotus Notes are popular Document originated DBMS systems.
 
 <p align="center">
-  <img src="assets/document-database.png" alt="Document Databases" width="300px" />
+  <img src="assets/document-database.png" alt="Document Databases" width="400px" />
 </p>
 
 **2. Key-value Stores**
@@ -1103,8 +1103,34 @@ When running a 32-bit system build of MongoDB, the total storage size for the se
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why are MongoDB data files large in size?***
-#### Q. ***What is Sharding in MongoDB?***
+## Q. ***What is Sharding in MongoDB?***
+
+**Sharding** is a method for distributing data across multiple machines. MongoDB uses sharding to support deployments with very large data sets and high throughput operations.
+
+Database systems with large data sets or high throughput applications can challenge the capacity of a single server. There are two methods for addressing system growth: vertical and horizontal scaling.
+
+**1. Vertical Scaling**
+
+Vertical Scaling involves increasing the capacity of a single server, such as using a more powerful CPU, adding more RAM, or increasing the amount of storage space.
+
+**2. Horizontal Scaling**
+
+Horizontal Scaling involves dividing the system dataset and load over multiple servers, adding additional servers to increase capacity as required. While the overall speed or capacity of a single machine may not be high, each machine handles a subset of the overall workload, potentially providing better efficiency than a single high-speed high-capacity server.
+
+<p align="center">
+  <img src="assets/sharding.png" alt="Document Databases" width="400px" />
+</p>
+
+MongoDB supports horizontal scaling through `sharding`. A MongoDB sharded cluster consists of the following components:
+
+* **Shards**: Each shard contains a subset of the sharded data. Each shard can be deployed as a replica set.
+* **Mongos**: The mongos acts as a query router, providing an interface between client applications and the sharded  cluster. Starting in MongoDB 4.4, mongos can support hedged reads to minimize latencies.
+* **Config Servers**: Config servers store metadata and configuration settings for the cluster.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is Aggregation in MongoDB?***
 #### Q. ***How can you isolate your cursors from intervening with the write operations?***
 #### Q. ***At what interval does MongoDB write updates to the disk?***
