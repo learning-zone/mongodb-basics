@@ -1131,7 +1131,46 @@ MongoDB supports horizontal scaling through `sharding`. A MongoDB sharded cluste
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is Aggregation in MongoDB?***
+## Q. ***What is Aggregation in MongoDB?***
+
+Aggregation in MongoDB is an operation used to process the data that returns the computed results. Aggregation basically groups the data from multiple documents and operates in many ways on those grouped data in order to return one combined result.
+
+Aggregate function groups the records in a collection, and can be used to provide total number(sum), average, minimum, maximum etc out of the group selected. In order to perform the aggregate function in MongoDB, aggregate () is the function to be used. Following is the syntax for aggregation
+
+```js
+db.collection_name.aggregate(aggregate_operation)
+```
+
+MongoDB\'s aggregation framework is modeled on the concept of data processing pipelines. Documents enter a multi-stage pipeline that transforms the documents into an aggregated result.
+
+**Example**
+
+```js
+db.orders.aggregate([
+   { $match: { status: "A" } },
+   { $group: { _id: "$cust_id", total: { $sum: "$amount" } } }
+]);
+```
+
+The `$match` stage filters the documents by the status field and passes to the next stage those documents that have status equal to "A". The `$group` stage groups the documents by the cust_id field to calculate the sum of the amount for each unique cust_id.
+
+**Expressions used by Aggregate function**
+
+|Expression  |Description                                                           |
+|------------|----------------------------------------------------------------------|
+|$sum        |Summates the defined values from all the documents in a collection|
+|$avg        |Calculates the average values from all the documents in a collection|
+|$min        |Return the minimum of all values of documents in a collection|
+|$max        |Return the maximum of all values of documents in a collection|
+|$addToSet   |Inserts values to an array but no duplicates in the resulting document|
+|$push       |Inserts values to an array in the resulting document|
+|$first      |Returns the first document from the source document|
+|$last       |Returns the last document from the source document|
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How can you isolate your cursors from intervening with the write operations?***
 #### Q. ***At what interval does MongoDB write updates to the disk?***
 #### Q. ***By default, MongoDB writes and reads data from both primary and secondary replica sets. True or False.?***
