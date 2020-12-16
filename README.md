@@ -1171,7 +1171,19 @@ The `$match` stage filters the documents by the status field and passes to the n
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How can you isolate your cursors from intervening with the write operations?***
+## Q. ***How can you isolate your cursors from intervening with the write operations?***
+
+As cursor is not isolated during its lifetime, thus intervening write operations on a document may result in cursor that returns a document more than once. The `snapshot()` method can be used on a cursor to isolate the operation for a very specific case. `snapshot()` traverses the index on the `_id` field and guarantees that the query will return each document no more than once.
+
+**Restriction:**
+
+* We cannot use `snapshot()` with sharded collections.
+* We cannot use `snapshot()` with `sort()` or `hint()` cursor methods.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***At what interval does MongoDB write updates to the disk?***
 #### Q. ***By default, MongoDB writes and reads data from both primary and secondary replica sets. True or False.?***
 #### Q. ***Mention the command to list all the indexes on a particular collection?***
