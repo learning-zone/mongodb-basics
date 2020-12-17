@@ -1185,6 +1185,13 @@ As cursor is not isolated during its lifetime, thus intervening write operations
 </div>
 
 #### Q. ***At what interval does MongoDB write updates to the disk?***
+
+By default configuration, MongoDB writes updates to the disk every 60 seconds. However, this is configurable with the `commitIntervalMs` and `syncPeriodSecs` options.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***By default, MongoDB writes and reads data from both primary and secondary replica sets. True or False.?***
 #### Q. ***Mention the command to list all the indexes on a particular collection?***
 #### Q. ***What happens if an index does not fit into RAM?***
