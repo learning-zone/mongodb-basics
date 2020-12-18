@@ -1192,7 +1192,6 @@ By default configuration, MongoDB writes updates to the disk every 60 seconds. H
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***By default, MongoDB writes and reads data from both primary and secondary replica sets. True or False.?***
 #### Q. ***Mention the command to list all the indexes on a particular collection?***
 #### Q. ***What happens if an index does not fit into RAM?***
 #### Q. ***Does MongoDB provide a facility to do text searches?***
