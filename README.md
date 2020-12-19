@@ -1243,7 +1243,25 @@ db.accounts.dropIndexes()
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What happens if an index does not fit into RAM?***
+## Q. ***What happens if an index does not fit into RAM?***
+
+If the indexes does not fit into RAM, MongoDB reads data from disk which is relatively very much slower than reading from RAM.
+
+Indexes do not have to fit entirely into RAM in all cases. If the value of the indexed field increments with every insert, and most queries select recently added documents; then MongoDB only needs to keep the parts of the index that hold the most recent or "right-most" values in RAM. This allows for efficient index use for read and write operations and minimize the amount of RAM required to support the index.
+
+**Example**: To check the size of indexes
+
+```js
+> db.collection.totalIndexSize()
+
+// Output (in bytes)
+4294976499 
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Does MongoDB provide a facility to do text searches?***
 #### Q. ***Where can I run MongoDB?***
 #### Q. ***How to remove a field completely from a MongoDB document?***
