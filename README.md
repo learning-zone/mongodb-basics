@@ -1348,7 +1348,18 @@ In a scenario where an abruption occurs at any point of time or flash disc remai
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Is MongoDB schema-less?***
+## Q. ***Is MongoDB schema-less?***
+
+As a NoSQL database, MongoDB is considered schemaless because it does not require a rigid, pre-defined schema like a relational database. The database management system (DBMS) enforces a partial schema as data is written, explicitly listing collections and indexes.
+
+MongoDB is a document based database, which does not use the concept of tables and columns, instead of which it uses the concept of documents and collections. All the referential data with respect to different modules will be stored as one collection. More over the BSON data structure used by MongoDB can easily have varying sets of data and fields with different types.
+
+When we say **schemaless**, we actually mean **dynamically typed schema**, as opposed to statically typed schemas as available in RDBMS(SQL) databases. JSON is a completely schema free data structure, as opposed to XML which allows you to specify XSD if you need.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is the advantage of the backup features in Ops Manager versus traditional backup strategies?***
 #### Q. ***What is splitting in mongodb?***
 #### Q. ***What is a Storage Engine in MongoDB?***
