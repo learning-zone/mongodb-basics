@@ -1262,7 +1262,57 @@ Indexes do not have to fit entirely into RAM in all cases. If the value of the i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Does MongoDB provide a facility to do text searches?***
+## Q. ***Does MongoDB provide a facility to do text search?***
+
+MongoDB supports query operations that perform a text search of string content. To perform text search, MongoDB uses a `text index` and the `$text` operator.
+
+**Example**
+
+A collection stores with the following documents:
+
+```js
+db.stores.insert(
+   [
+     { _id: 1, name: "Java Hut", description: "Coffee and cakes" },
+     { _id: 2, name: "Burger Buns", description: "Gourmet hamburgers" },
+     { _id: 3, name: "Coffee Shop", description: "Just coffee" },
+     { _id: 4, name: "Clothes Clothes Clothes", description: "Discount clothing" },
+     { _id: 5, name: "Java Shopping", description: "Indonesian goods" }
+   ]
+)
+```
+
+**1. Text Index**
+
+MongoDB provides `text indexes` to support text search queries on string content. `text indexes` can include any field whose value is a string or an array of string elements.
+
+```js
+db.stores.createIndex( { name: "text", description: "text" } )
+```
+
+**2. $text Operator**
+
+Use the `$text` query operator to perform text searches on a collection with a text index. `$text` will tokenize the search string using whitespace and most punctuation as delimiters, and perform a logical OR of all such tokens in the search string.
+
+**Example**:
+
+```js
+// Returns all stores containing any terms from the list “coffee”, “shop”, and “java”
+db.stores.find( { $text: { $search: "java coffee shop" } } )
+
+
+// Returns all documents containing “coffee shop”
+db.stores.find( { $text: { $search: "\"coffee shop\"" } } )
+
+
+// Returns all stores containing “java” or “shop” but not “coffee”
+db.stores.find( { $text: { $search: "java shop -coffee" } } )
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Where can I run MongoDB?***
 #### Q. ***How to remove a field completely from a MongoDB document?***
 #### Q. ***How does Journaling work in MongoDB?***
