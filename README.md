@@ -501,6 +501,25 @@ The secondaries replicate the primary\'s oplog and apply the operations to their
     <b><a href="#">↥ back to top</a></b>
 </div>
 
+## Q. ***How does MongoDB ensure high availability?***
+
+**High Availability (HA)** refers to the improvement of system and app availability by minimizing the downtime caused by routine maintenance operations (planned) and sudden system crashes (unplanned).
+
+**Replica Set**
+
+The replica set mechanism of MongoDB has two main purposes:
+
+* One is for data redundancy for failure recovery. When the hardware fails, or the node is down for other reasons, you can use a replica for recovery.
+* The other purpose is for read-write splitting. It routes the reading requests to the replica to reduce the reading pressure on the primary node.
+
+MongoDB automatically maintains replica sets, multiple copies of data that are distributed across servers, racks and data centers. Replica sets help prevent database downtime using native replication and automatic failover.
+
+A replica set consists of multiple replica set members. At any given time, one member acts as the primary member, and the other members act as secondary members. If the primary member fails for any reason (e.g., hardware failure), one of the secondary members is automatically elected to primary and begins to process all reads and writes.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***What is an Embedded MongoDB Document?***
 
 An embedded, or nested, MongoDB Document is a normal document that is nested inside another document within a MongoDB collection. Embedding connected data in a single document can reduce the number of read operations required to obtain data. In general, we should structure our schema so that application receives all of its required information in a single read operation.
@@ -1329,7 +1348,6 @@ In a scenario where an abruption occurs at any point of time or flash disc remai
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How does MongoDB ensure high availability?***
 #### Q. ***Is MongoDB schema-less?***
 #### Q. ***What is the advantage of the backup features in Ops Manager versus traditional backup strategies?***
 #### Q. ***What is splitting in mongodb?***
