@@ -1321,6 +1321,10 @@ Once the journal commit happens, mongod pushes data into shared view. As part of
 
 In a scenario where an abruption occurs at any point of time or flash disc remains unavailable for last 59 seconds , then when the next time mongod starts, it basically replays all write operation logs and writes into the actual data directory.
 
+<p align="center">
+  <img src="assets/journaling.png" alt="Document Databases" width="600px" />
+</p>
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
