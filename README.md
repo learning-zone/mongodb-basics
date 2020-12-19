@@ -1313,9 +1313,18 @@ db.stores.find( { $text: { $search: "java shop -coffee" } } )
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Where can I run MongoDB?***
-#### Q. ***How to remove a field completely from a MongoDB document?***
-#### Q. ***How does Journaling work in MongoDB?***
+## Q. ***How does Journaling work in MongoDB?***
+
+Mongod primarily hosts the write operations in memory in shared view. It is called shared because it has memory mapping in actual disc. In this process, a write operation occurs in mongod, which then creates changes in private view. The first block is memory and the second block is "my disc". After a specified interval, which is called a "journal commit interval", the private view writes those operations in journal directory (residing in the disc).
+
+Once the journal commit happens, mongod pushes data into shared view. As part of the process, it gets written to actual data directory from the shared view (as this process happens in background). The basic advantage is, we have a reduced cycle from 60 seconds to 200 milliseconds.
+
+In a scenario where an abruption occurs at any point of time or flash disc remains unavailable for last 59 seconds , then when the next time mongod starts, it basically replays all write operation logs and writes into the actual data directory.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Why is a covered query important?***
 #### Q. ***How does MongoDB provide concurrency?***
 #### Q. ***What are Primary and Secondary Replica sets?***
