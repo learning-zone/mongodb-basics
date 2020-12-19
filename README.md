@@ -1325,19 +1325,12 @@ In a scenario where an abruption occurs at any point of time or flash disc remai
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why is a covered query important?***
-#### Q. ***How does MongoDB provide concurrency?***
-#### Q. ***What are Primary and Secondary Replica sets?***
-#### Q. ***How replication works in MongoDB?***
-#### Q. ***What are alternatives to MongoDB?***
-#### Q. ***Update MongoDB field using value of another field?***
 #### Q. ***How does MongoDB ensure high availability?***
 #### Q. ***Is MongoDB schema-less?***
 #### Q. ***What is the advantage of the backup features in Ops Manager versus traditional backup strategies?***
 #### Q. ***What is splitting in mongodb?***
 #### Q. ***What is a Storage Engine in MongoDB?***
 #### Q. ***How to condense large volumes of data in Mongo?***
-#### Q. ***What is horizontal scalability?***
 #### Q. ***Is it possible to update MongoDB field using value of another field?***
 #### Q. ***How to check if a field contains a substring?***
 #### Q. ***How to find document with array that contains a specific value?***
