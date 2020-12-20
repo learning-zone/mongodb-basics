@@ -1360,7 +1360,6 @@ When we say **schemaless**, we actually mean **dynamically typed schema**, as op
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is splitting in mongodb?***
 #### Q. ***What is a Storage Engine in MongoDB?***
 #### Q. ***How to condense large volumes of data in Mongo?***
 #### Q. ***Is it possible to update MongoDB field using value of another field?***
