@@ -1414,7 +1414,28 @@ MMAPv1 is a B-tree based system which powers many of the functions such as stora
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to condense large volumes of data in Mongo?***
+## Q. ***How to condense large volumes of data in Mongodb?***
+
+**compact**
+
+Rewrites and defragments all data and indexes in a collection. On `WiredTiger` databases, this command will release unneeded disk space to the operating system. This command will perform a compaction "in-line".
+
+MongoDB compresses the files by:
+
+* copying the files to a new location
+* looping through the documents and re-ordering / re-solving them
+* replacing the original files with the new files
+
+**Syntax**
+
+```js
+{ compact: <collection name> }
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Is it possible to update MongoDB field using value of another field?***
 #### Q. ***How to check if a field contains a substring?***
 #### Q. ***How to find document with array that contains a specific value?***
