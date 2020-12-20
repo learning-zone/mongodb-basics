@@ -1360,7 +1360,60 @@ When we say **schemaless**, we actually mean **dynamically typed schema**, as op
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is a Storage Engine in MongoDB?***
+## Q. ***What is a Storage Engine in MongoDB?***
+
+The storage engine is the component of the database that is responsible for managing how data is stored, both in memory and on disk. MongoDB supports multiple storage engines, as different engines perform better for specific workloads.
+
+**Example**: command to find storage engine
+
+```js
+> db.serverStatus().storageEngine
+
+// Output
+{
+    "name" : "wiredTiger",
+    "supportsCommittedReads" : true,
+    "oldestRequiredTimestampForCrashRecovery" : Timestamp(0, 0),
+    "supportsPendingDrops" : true,
+    "dropPendingIdents" : NumberLong(0),
+    "supportsTwoPhaseIndexBuild" : true,
+    "supportsSnapshotReadConcern" : true,
+    "readOnly" : false,
+    "persistent" : true,
+    "backupCursorOpen" : false
+}
+```
+
+<p align="center">
+  <img src="assets/StorageEngine.png" alt="Storage Engine" />
+</p>
+
+MongoDB supports mainly 3 storage engines whose performance differ in accordance to some specific workloads. The storage engines are:
+
+* WiredTiger Storage Engine
+* In-Memory Storage Engine
+* MMAPv1 Storage Engine
+
+**1. WiredTiger Storage Engine**
+
+`WiredTiger` is the default storage engine starting in MongoDB 3.2. It is well-suited for most workloads and is recommended for new deployments. WiredTiger provides a document-level concurrency model, checkpointing, and compression, among other features. The WiredTiger storage engine has both configurations of a `B-Tree` Based Engine and a `Log Structured Merge Tree` Based Engine.
+
+**2. In-Memory Storage Engine**
+
+In-Memory Storage Engine is available in MongoDB Enterprise. Rather than storing documents on-disk, it retains them in-memory for more predictable data latencies.
+
+**3. MMAPv1 Storage Engine**
+
+MMAPv1 is a B-tree based system which powers many of the functions such as storage interaction and memory management to the operating system. Its name comes from the fact that it uses memory mapped files to access data. It does so by directly loading and modifying file contents, which are in a virtual memory through a `mmap()` `syscall` methodology.
+
+<p align="center">
+  <img src="assets/MONGO_SE1.png" alt="Storage Engine" width="600px" />
+</p>
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to condense large volumes of data in Mongo?***
 #### Q. ***Is it possible to update MongoDB field using value of another field?***
 #### Q. ***How to check if a field contains a substring?***
