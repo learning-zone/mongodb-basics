@@ -1467,7 +1467,30 @@ db.users.findOne({"username" : {$regex : ".*some_string.*"}});
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to find document with array that contains a specific value?***
+## Q. ***How to find document with array that contains a specific value?***
+
+Populate the inventory collection
+
+```js
+db.inventory.insertMany([
+   { item: "journal", qty: 25, tags: ["blank", "red"], dim_cm: [ 14, 21 ] },
+   { item: "notebook", qty: 50, tags: ["red", "blank"], dim_cm: [ 14, 21 ] },
+   { item: "paper", qty: 100, tags: ["red", "blank", "plain"], dim_cm: [ 14, 21 ] },
+   { item: "planner", qty: 75, tags: ["blank", "red"], dim_cm: [ 22.85, 30 ] },
+   { item: "postcard", qty: 45, tags: ["blue"], dim_cm: [ 10, 15.25 ] }
+]);
+```
+
+To query if the array field contains at least one element with the specified value, use the filter { `<field>`: `<value>` } where `<value>` is the element value.
+
+```js
+db.inventory.find( { tags: "red" } )
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to find MongoDB records where array field is not empty?***
 #### Q. ***How to get the last N records from find?***
 #### Q. ***Explain relationships in mongodb?***
