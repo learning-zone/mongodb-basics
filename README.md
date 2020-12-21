@@ -1455,7 +1455,18 @@ db.collection.<update method>(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to check if a field contains a substring?***
+## Q. ***How to check if a field contains a substring?***
+
+The `$regex` operator can be used to check if a field contains a string in MongoDB.
+
+```js
+db.users.findOne({"username" : {$regex : ".*some_string.*"}});
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to find document with array that contains a specific value?***
 #### Q. ***How to find MongoDB records where array field is not empty?***
 #### Q. ***How to get the last N records from find?***
