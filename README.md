@@ -1436,7 +1436,25 @@ MongoDB compresses the files by:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Is it possible to update MongoDB field using value of another field?***
+## Q. ***Is it possible to update MongoDB field using value of another field?***
+
+The aggregate function can be used to update MongoDB field using the value of another field.
+
+**Example**
+
+```js
+db.collection.<update method>(
+    {},
+    [
+        {"$set": {"name": { "$concat": ["$firstName", " ", "$lastName"]}}}
+    ]
+)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to check if a field contains a substring?***
 #### Q. ***How to find document with array that contains a specific value?***
 #### Q. ***How to find MongoDB records where array field is not empty?***
