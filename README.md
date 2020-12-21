@@ -1501,7 +1501,21 @@ db.inventory.find({ pictures: { $exists: true, $ne: [] } })
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to get the last N records from find?***
+## Q. ***How to get the last N records from find?***
+
+```js
+// Syntax
+db.<CollectionName>.find().sort({$natural:-1}).limit(value)
+
+
+// Example
+db.employee.find().sort({$natural:-1}).limit(100)
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***Explain relationships in mongodb?***
 #### Q. ***What is use of capped collection in MongoDB?***
 
