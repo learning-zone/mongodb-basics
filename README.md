@@ -1491,7 +1491,16 @@ db.inventory.find( { tags: "red" } )
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***How to find MongoDB records where array field is not empty?***
+## Q. ***How to find MongoDB records where array field is not empty?***
+
+```js
+db.inventory.find({ pictures: { $exists: true, $ne: [] } })
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***How to get the last N records from find?***
 #### Q. ***Explain relationships in mongodb?***
 #### Q. ***What is use of capped collection in MongoDB?***
