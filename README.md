@@ -1516,7 +1516,104 @@ db.employee.find().sort({$natural:-1}).limit(100)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Explain relationships in mongodb?***
+## Q. ***Explain relationships in mongodb?***
+
+Relationships in MongoDB are used to specify how one or more documents are related to each other. In MongoDB, the relationships can be modelled either by Embedded way or by using the Reference approach. These relationships can be of the following forms:
+
+* One to One
+* One to Many
+* Many to Many
+
+**Example**: Let us consider the case of storing addresses for users. So, one user can have multiple addresses making this a `1:N` relationship.
+
+User Collection
+
+```js
+{
+   "_id":ObjectId("52ffc33cd85242f436000001"),
+   "name": "Alex K",
+   "contact": "987654321",
+   "dob": "01-01-1990"
+}
+```
+
+Address Collection
+
+```js
+{
+   "_id":ObjectId("52ffc4a5d85242602e000000"),
+   "building": "22 A, Indiana Apt",
+   "pincode": 123456,
+   "city": "Los Angeles",
+   "state": "California"
+} 
+```
+
+**1. Modeling Embedded Relationships**
+
+In the embedded approach, we will embed the address document inside the user document.
+
+```js
+> db.users.insert({
+	{
+		"_id":ObjectId("52ffc33cd85242f436000001"),
+		"contact": "987654321",
+		"dob": "01-01-1991",
+		"name": "Alex K",
+		"address": [
+			{
+				"building": "22 A, Indiana Apt",
+				"pincode": 123456,
+				"city": "Los Angeles",
+				"state": "California"
+			},
+			{
+				"building": "170 A, Acropolis Apt",
+				"pincode": 456789,
+				"city": "Chicago",
+				"state": "Illinois"
+			}
+		]
+	}
+})
+```
+
+This approach maintains all the related data in a single document, which makes it easy to retrieve and maintain. The whole document can be retrieved in a single query such as −
+
+```js
+>db.users.findOne({"name":"Alex K"},{"address":1})
+```
+
+The drawback is that if the embedded document keeps on growing too much in size, it can impact the read/write performance.
+
+**2. Modeling Referenced Relationships**
+
+This is the approach of designing normalized relationship. In this approach, both the user and address documents will be maintained separately but the user document will contain a field that will reference the address document\'s id field.
+
+```js
+{
+   "_id":ObjectId("52ffc33cd85242f436000001"),
+   "contact": "987654321",
+   "dob": "01-01-1991",
+   "name": "Alex K",
+   "address_ids": [
+      ObjectId("52ffc4a5d85242602e000000"),
+      ObjectId("52ffc4a5d85242602e000001")
+   ]
+}
+```
+
+With this approach, we will need two queries: first to fetch the `address_ids` fields from user document and second to fetch these addresses from address collection.
+
+```js
+>var result = db.users.findOne({"name":"Alex K"},{"address_ids":1})
+>var addresses = db.address.find({"_id":{"$in":result["address_ids"]}})
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 #### Q. ***What is use of capped collection in MongoDB?***
 
 <div align="right">
