@@ -1614,7 +1614,33 @@ With this approach, we will need two queries: first to fetch the `address_ids` f
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***What is use of capped collection in MongoDB?***
+## Q. ***What is use of capped collection in MongoDB?***
+
+**Capped collections** are fixed-size collections that support high-throughput operations that insert and retrieve documents based on insertion order. Capped collections work in a way similar to `circular buffers`: once a collection fills its allocated space, it makes room for new documents by overwriting the oldest documents in the collection.
+
+Capped collections restrict updates to the documents if the update results in increased document size. Since capped collections store documents in the order of the disk storage, it ensures that the document size does not increase the size allocated on the disk. Capped collections are best for storing log information, cache data, or any other high volume data.
+
+**Example:-**
+
+```js
+>db.createCollection( "log", { capped: true, size: 100000 } )
+
+
+// specify a maximum number of documents for the collection
+>db.createCollection("log", { capped: true, size: 5242880, max: 5000 } )
+
+
+// check whether a collection is capped or not
+>db.cappedLogCollection.isCapped()
+
+
+// convert existing collection to capped
+>db.runCommand({"convertToCapped": "posts", size: 10000})
+
+
+// Querying Capped Collection
+>db.cappedLogCollection.find().sort({$natural: -1})
+```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
