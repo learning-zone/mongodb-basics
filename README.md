@@ -75,6 +75,19 @@ Graph base databases mostly used for social networks, logistics, spatial data.
 
 **MongoDB** is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents. Documents consist of key-value pairs which are the basic unit of data in MongoDB. Collections contain sets of documents and function which is the equivalent of relational database tables.
 
+**Key Features**
+
+* Document Oriented and NoSQL database.
+* Supports Aggregation
+* Uses BSON format
+* Sharding (Helps in Horizontal Scalability)
+* Supports Ad Hoc Queries
+* Schema Less
+* Capped Collection
+* Indexing (Any field in MongoDB can be indexed)
+* MongoDB Replica Set (Provides high availability)
+* Supports Multiple Storage Engines
+
 **Key Components**
 
 **1. _id**: The `_id` field represents a unique value in the MongoDB document. The `_id` field is like the document\'s primary key. If you create a new document without an `_id` field, MongoDB will automatically create the field.
@@ -97,11 +110,18 @@ Connecting MongoDB Cloud using MongoDB Compass
    <img src="assets/mongodb-compass.png" alt="MongoDB Compass" width="800px" title="MongoDB Compass" />
 </p>
 
-**[[Getting Started](https://docs.mongodb.com/guides/)]**
+**[[Read More](https://docs.mongodb.com/guides/)]**
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. ***Mention the command to insert a document in a database called company and collection called employee?***
+
+```js
+use company;
+db.employee.insert( { name: "John", email: "john.k@gmail.com" } )
+```
 
 ## Q. ***What are Indexes in MongoDB?***
 
@@ -358,9 +378,37 @@ By default MongoDB creates a unique index on the `_id` field during the creation
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Can you create an index on an array field in MongoDB?***
+## Q. ***Can you create an index in an array field in MongoDB?***
 
-Yes. An array field can be indexed in MongoDB. In this case, MongoDB would index each value of the array.
+Yes, To index a field that holds an array value, MongoDB creates an index key for each element in the array. Multikey indexes can be constructed over arrays that hold both scalar values (e.g. strings, numbers) and nested documents. MongoDB automatically creates a multikey index if any indexed field is an array.
+
+Syntax
+
+```js
+db.collection.createIndex( { <field>: < 1 or -1 > } )
+```
+
+For example, consider an inventory collection that contains the following documents:
+
+```js
+{ _id: 10, type: "food", item: "aaa", ratings: [ 5, 8, 9 ] }
+{ _id: 11, type: "food", item: "bbb", ratings: [ 5, 9 ] }
+{ _id: 12, type: "food", item: "ccc", ratings: [ 9, 5, 8, 4, 7 ] }
+```
+
+The collection has a multikey index on the ratings field:
+
+```js
+db.inventory.createIndex( { ratings: 1 } )
+```
+
+The following query looks for documents where the ratings field is the array [ 5, 9 ]:
+
+```js
+db.inventory.find( { ratings: [ 5, 9 ] } )
+```
+
+MongoDB can use the multikey index to find documents that have 5 at any position in the ratings array. Then, MongoDB retrieves these documents and filters for documents whose ratings array equals the query array [ 5, 9 ].
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -750,6 +798,13 @@ Related information is stored in different tables but the concept of JOIN operat
 
 ## Q. ***How MongoDB supports ACID transactions and locking functionalities?***
 
+ACID stands that any update is:
+
+* **Atomic:** it either fully completes or it does not
+* **Consistent:** no reader will see a "partially applied" update
+* **Isolated:** no reader will see a "dirty" read
+* **Durable:** (with the appropriate write concern)
+
 MongoDB, has always supported ACID transactions in a single document and, when leveraging the document model appropriately, many applications don\'t need ACID guarantees across multiple documents.
 
 MongoDB is a document based  NoSQL database with a flexible schema. Transactions are not operations that should be executed for every write operation  since they incur a greater performance cost over a single document writes. With a document based structure and denormalized data model, there will be a minimized need for transactions. Since MongoDB allows document embedding, you don\'t necessarily need to use a transaction to meet a write operation.
@@ -763,9 +818,9 @@ These are multi-statement operations that need to be executed sequentially witho
 ```js
 $session.startTransaction()
 
-   db.users.insert({_id:6, name “Ibrahim”})
+   db.users.insert({_id: 6, name: "John"})
 
-   db.users.updateOne({_id:3 , {$set:{age:50}}})
+   db.users.updateOne({_id: 3, {$set: {age:26} }})
 
 session.commit_transaction()
 ```
@@ -1000,7 +1055,7 @@ PRIMARY> db.oplog.rs.find()
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Does MongoDB pushes the writes to disk immediately or lazily?***
+## Q. ***Does MongoDB pushes the writes to disk immediately or lazily?***
 
 MongoDB pushes the data to disk lazily. It updates the immediately written to the journal but writing the data from journal to disk happens lazily.
 
@@ -1089,7 +1144,7 @@ The MongoDB covered query is one which uses an index and does not have to examin
 
 * All fields in a query are part of an index.
 * All fields returned in the results are of the same index.
-* no fields in the query are equal to null
+* No fields in the query are equal to null
 
 Since all the fields present in the query are part of an index, MongoDB matches the query conditions and returns the result using the same index without actually looking inside the documents.
 
@@ -1114,9 +1169,29 @@ db.inventory.find(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***Why MongoDB is not preferred over a 32-bit system?***
+## Q. ***Why MongoDB is not preferred over a 32-bit system?***
 
 When running a 32-bit system build of MongoDB, the total storage size for the server, including data and indexes, is 2 gigabytes. The reason for this is that the MongoDB storage engine uses memory-mapped files for performance.
+
+If you are running a 64-bit build of MongoDB, there is virtually no limit to storage size.
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Mention the command to check whether you are on the master server or not?***
+
+```js
+db.isMaster()
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Can one MongoDB operation lock more than one database?***
+
+Yes. Operations like `db.copyDatabase()`, `db.repairDatabase()`, etc. can lock more than one databases involved.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1154,11 +1229,19 @@ MongoDB supports horizontal scaling through `sharding`. A MongoDB sharded cluste
 
 Aggregation in MongoDB is an operation used to process the data that returns the computed results. Aggregation basically groups the data from multiple documents and operates in many ways on those grouped data in order to return one combined result.
 
-Aggregate function groups the records in a collection, and can be used to provide total number(sum), average, minimum, maximum etc out of the group selected. In order to perform the aggregate function in MongoDB, aggregate () is the function to be used. Following is the syntax for aggregation
+Aggregate function groups the records in a collection, and can be used to provide total number(sum), average, minimum, maximum etc out of the group selected. In order to perform the aggregate function in MongoDB, aggregate () is the function to be used.
+
+Syntax 
 
 ```js
 db.collection_name.aggregate(aggregate_operation)
 ```
+
+MongoDB provides three ways to perform aggregation:
+
+* the aggregation pipeline,
+* the map-reduce function,
+* and single purpose aggregation methods and commands.
 
 MongoDB\'s aggregation framework is modeled on the concept of data processing pipelines. Documents enter a multi-stage pipeline that transforms the documents into an aggregated result.
 
@@ -1185,6 +1268,14 @@ The `$match` stage filters the documents by the status field and passes to the n
 |$push       |Inserts values to an array in the resulting document|
 |$first      |Returns the first document from the source document|
 |$last       |Returns the last document from the source document|
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***Why are MongoDB data files large in size?***
+
+MongoDB preallocates data files to reserve space and avoid file system fragmentation when you setup the server.
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1516,7 +1607,7 @@ db.employee.find().sort({$natural:-1}).limit(100)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Explain relationships in mongodb?***
+## Q. ***Explain relationships in MongoDB?***
 
 Relationships in MongoDB are used to specify how one or more documents are related to each other. In MongoDB, the relationships can be modelled either by Embedded way or by using the Reference approach. These relationships can be of the following forms:
 
@@ -1641,6 +1732,40 @@ Capped collections restrict updates to the documents if the update results in in
 // Querying Capped Collection
 >db.cappedLogCollection.find().sort({$natural: -1})
 ```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to remove a field completely from a MongoDB document?***
+
+How do I remove words completely from all the documents in this collection?
+
+```js
+{ 
+    name: 'book',
+    tags: {
+        words: ['abc','123'], // <-- remove it comletely
+        lat: 33,
+        long: 22
+    }
+}
+```
+
+**Answer**
+
+```js
+db.example.update({}, {$unset: {words: 1}}, false, true);
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***What is splitting in MongoDB?***
+## Q. ***Explain what is horizontal scalability in mongodb?***
+
+*ToDo*
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
