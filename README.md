@@ -5,6 +5,7 @@
 ## Table of Contents
 
 * *[MongoDB Commands](mongodb-commands.md)*
+* *[MongoDB Coding Practice](mongodb-code.md)*
 
 <br/>
 
