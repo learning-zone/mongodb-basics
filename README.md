@@ -506,17 +506,6 @@ MongoDB stores BSON (Binary Interchange and Structure Object Notation) objects i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Mention the command to insert a document in a database called school and collection called persons?*** 
-
-```js
-use school;
-db.persons.insert( { name: "Alex", age: "28" } )
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***What is Replication in Mongodb?***
 
 Replication exists primarily to offer data redundancy and high availability. It maintain the durability of data by keeping multiple copies or replicas of that data on physically isolated servers. Replication allows to increase data availability by creating multiple copies of data across servers. This is especially useful if a server crashes or hardware failure.
@@ -1184,60 +1173,9 @@ As cursor is not isolated during its lifetime, thus intervening write operations
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-#### Q. ***At what interval does MongoDB write updates to the disk?***
+## Q. ***At what interval does MongoDB write updates to the disk?***
 
 By default configuration, MongoDB writes updates to the disk every 60 seconds. However, this is configurable with the `commitIntervalMs` and `syncPeriodSecs` options.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Mention the command to remove indexes and list all the indexes on a particular collection?***
-
-**List all Indexes on a Collection**
-
-```js
-// To view all indexes on the people collection
-
-db.people.getIndexes()
-```
-
-**List all Indexes for a Database**
-
-```js
-// To list all the collection indexes in a database
-
-db.getCollectionNames().forEach(function(collection) {
-   indexes = db[collection].getIndexes();
-   print("Indexes for " + collection + ":");
-   printjson(indexes);
-});
-```
-
-**Remove Indexes**
-
-MongoDB provides two methods for removing indexes from a collection:
-
-* `db.collection.dropIndex()`
-* `db.collection.dropIndexes()`
-
-**1. Remove Specific Index**
-
-```js
-db.accounts.dropIndex( { "tax-id": 1 } )
-
-
-// Output
-{ "nIndexesWas" : 3, "ok" : 1 }
-```
-
-**2. Remove All Indexes**
-
-```js
-// The following command removes all indexes from the accounts collection
-
-db.accounts.dropIndexes()
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
