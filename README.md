@@ -117,13 +117,6 @@ Connecting MongoDB Cloud using MongoDB Compass
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Mention the command to insert a document in a database called company and collection called employee?***
-
-```js
-use company;
-db.employee.insert( { name: "John", email: "john.k@gmail.com" } )
-```
-
 ## Q. ***What are Indexes in MongoDB?***
 
 Indexes support the efficient execution of queries in MongoDB. Without indexes, MongoDB must perform a collection scan, i.e. scan every document in a collection, to select those documents that match the query statement. If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents it must inspect.
@@ -866,100 +859,6 @@ MongoDB transactions can exist only for relatively short time periods.  By defau
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to combine data from multiple collections into one collection?***
-
-**$lookup**
-
-Performs a left outer join to an unsharded collection in the same database to filter in documents from the “joined” collection for processing. To each input document, the `$lookup` stage adds a new array field whose elements are the matching documents from the “joined” collection. The `$lookup` stage passes these reshaped documents to the next stage.
-
-**Syntax**
-
-```js
-{
-   $lookup:
-     {
-       from: <collection to join>,
-       localField: <field from the input documents>,
-       foreignField: <field from the documents of the "from" collection>,
-       as: <output array field>
-     }
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Find objects between two dates MongoDB?***
-
-Operator `$gte` and `$lt` is used to find objects between two dates in MongoDB.
-
-**Example**: Creating a collection
-
-```js
->db.order.insert({"OrderId":1,"OrderAddrees":"US","OrderDateTime":ISODate("2020-02-19")};
-WriteResult({ "nInserted" : 1 })
-
->db.order.insert({"OrderId":2,"OrderAddrees":"UK","OrderDateTime":ISODate("2020-02-26")};
-WriteResult({ "nInserted" : 1 })
-```
-
-Display all documents from the collection using `find()` method.
-
-```js
-> db.order.find().pretty();
-
-// Output
-{
-   "_id" : ObjectId("5c6c072068174aae23f5ef57"),
-   "OrderId" : 1,
-   "OrderAddrees" : "US",
-   "OrderDateTime" : ISODate("2020-02-19T00:00:00Z")
-}
-{
-   "_id" : ObjectId("5c6c073568174aae23f5ef58"),
-   "OrderId" : 2,
-   "OrderAddrees" : "UK",
-   "OrderDateTime" : ISODate("2020-02-26T00:00:00Z")
-}
-```
-
-Here is the query to find objects between two dates:
-
-```js
-> db.order.find({"OrderDateTime":{ $gte:ISODate("2020-02-10"), $lt:ISODate("2020-02-21") }
-}).pretty();
-
-
-// Output
-{
-   "_id" : ObjectId("5c6c072068174aae23f5ef57"),
-   "OrderId" : 1,
-   "OrderAddrees" : "US",
-   "OrderDateTime" : ISODate("2020-02-19T00:00:00Z")
-}
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to query MongoDB with "like"?***
-
-```js
-db.users.insert({name: 'paulo'})
-db.users.insert({name: 'patric'})
-db.users.insert({name: 'pedro'})
-
-db.users.find({name: /a/})  //like '%a%'
-db.users.find({name: /^pa/}) //like 'pa%'
-db.users.find({name: /ro$/}) //like '%ro'
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***Should I normalize my data before storing it in MongoDB?***
 
 Data used by multiple documents can either be embedded (denormalized) or referenced (normalized). Normalization, which is increasing the complexity of the schema by splitting tables into multiple smaller ones to reduce the data redundancy( 1NF, 2NF, 3NF).
@@ -1175,16 +1074,6 @@ db.inventory.find(
 When running a 32-bit system build of MongoDB, the total storage size for the server, including data and indexes, is 2 gigabytes. The reason for this is that the MongoDB storage engine uses memory-mapped files for performance.
 
 If you are running a 64-bit build of MongoDB, there is virtually no limit to storage size.
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***Mention the command to check whether you are on the master server or not?***
-
-```js
-db.isMaster()
-```
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
@@ -1528,86 +1417,6 @@ MongoDB compresses the files by:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Is it possible to update MongoDB field using value of another field?***
-
-The aggregate function can be used to update MongoDB field using the value of another field.
-
-**Example**
-
-```js
-db.collection.<update method>(
-    {},
-    [
-        {"$set": {"name": { "$concat": ["$firstName", " ", "$lastName"]}}}
-    ]
-)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to check if a field contains a substring?***
-
-The `$regex` operator can be used to check if a field contains a string in MongoDB.
-
-```js
-db.users.findOne({"username" : {$regex : ".*some_string.*"}});
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to find document with array that contains a specific value?***
-
-Populate the inventory collection
-
-```js
-db.inventory.insertMany([
-   { item: "journal", qty: 25, tags: ["blank", "red"], dim_cm: [ 14, 21 ] },
-   { item: "notebook", qty: 50, tags: ["red", "blank"], dim_cm: [ 14, 21 ] },
-   { item: "paper", qty: 100, tags: ["red", "blank", "plain"], dim_cm: [ 14, 21 ] },
-   { item: "planner", qty: 75, tags: ["blank", "red"], dim_cm: [ 22.85, 30 ] },
-   { item: "postcard", qty: 45, tags: ["blue"], dim_cm: [ 10, 15.25 ] }
-]);
-```
-
-To query if the array field contains at least one element with the specified value, use the filter { `<field>`: `<value>` } where `<value>` is the element value.
-
-```js
-db.inventory.find( { tags: "red" } )
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to find MongoDB records where array field is not empty?***
-
-```js
-db.inventory.find({ pictures: { $exists: true, $ne: [] } })
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to get the last N records from find?***
-
-```js
-// Syntax
-db.<CollectionName>.find().sort({$natural:-1}).limit(value)
-
-
-// Example
-db.employee.find().sort({$natural:-1}).limit(100)
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
 ## Q. ***Explain relationships in MongoDB?***
 
 Relationships in MongoDB are used to specify how one or more documents are related to each other. In MongoDB, the relationships can be modelled either by Embedded way or by using the Reference approach. These relationships can be of the following forms:
@@ -1732,31 +1541,6 @@ Capped collections restrict updates to the documents if the update results in in
 
 // Querying Capped Collection
 >db.cappedLogCollection.find().sort({$natural: -1})
-```
-
-<div align="right">
-    <b><a href="#">↥ back to top</a></b>
-</div>
-
-## Q. ***How to remove a field completely from a MongoDB document?***
-
-How do I remove words completely from all the documents in this collection?
-
-```js
-{ 
-    name: 'book',
-    tags: {
-        words: ['abc','123'], // <-- remove it comletely
-        lat: 33,
-        long: 22
-    }
-}
-```
-
-**Answer**
-
-```js
-db.example.update({}, {$unset: {words: 1}}, false, true);
 ```
 
 <div align="right">
