@@ -248,3 +248,54 @@ db.inventory.find( { tags: "red" } )
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+## Q. ***Mention the command to remove indexes and list all the indexes on a particular collection?***
+
+**List all Indexes on a Collection**
+
+```js
+// To view all indexes on the people collection
+
+db.people.getIndexes()
+```
+
+**List all Indexes for a Database**
+
+```js
+// To list all the collection indexes in a database
+
+db.getCollectionNames().forEach(function(collection) {
+   indexes = db[collection].getIndexes();
+   print("Indexes for " + collection + ":");
+   printjson(indexes);
+});
+```
+
+**Remove Indexes**
+
+MongoDB provides two methods for removing indexes from a collection:
+
+* `db.collection.dropIndex()`
+* `db.collection.dropIndexes()`
+
+**1. Remove Specific Index**
+
+```js
+db.accounts.dropIndex( { "tax-id": 1 } )
+
+
+// Output
+{ "nIndexesWas" : 3, "ok" : 1 }
+```
+
+**2. Remove All Indexes**
+
+```js
+// The following command removes all indexes from the accounts collection
+
+db.accounts.dropIndexes()
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
