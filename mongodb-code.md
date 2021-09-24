@@ -299,3 +299,59 @@ db.accounts.dropIndexes()
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
+
+
+## Q. ***Select only selected elements from given collection?***
+
+Consider a ```books``` collection with the following document:
+
+```js
+{
+  "_id" : 1,
+  title: "abc123",
+  isbn: "0001122223334",
+  author: { last: "zzz", first: "aaa" },
+  copies: 5
+}
+```
+
+The following ```$project``` stage adds the new fields isbn, lastName, and copiesSold:
+
+```js
+db.books.aggregate([
+{
+    $project : {
+        title:1,
+        isbn: {
+               prefix: { $substr: [ "$isbn", 0, 3 ] },
+               group: { $substr: [ "$isbn", 3, 2 ] },
+               publisher: { $substr: [ "$isbn", 5, 4 ] },
+               title: { $substr: [ "$isbn", 9, 3 ] },
+               checkDigit: { $substr: [ "$isbn", 12, 1] }
+            },
+         lastName: "$author.last",
+        copiesSold: "$copies"
+    }
+}
+])
+```
+The operation results in the following document:
+
+```js
+{
+   "_id" : 1,
+   "title" : "abc123",
+   "isbn" : {
+      "prefix" : "000",
+      "group" : "11",
+      "publisher" : "2222",
+      "title" : "333",
+      "checkDigit" : "4"
+   },
+   "lastName" : "zzz",
+   "copiesSold" : 5
+}
+```
+
+
