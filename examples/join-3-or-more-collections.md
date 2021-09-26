@@ -105,9 +105,9 @@ Each customer has multiple orders, and each order has multiple order items.
 
 Do nested lookup using lookup with pipeline,
 
-1. ```$lookup``` with orders collection,
-2. ```let```, define variable customer_id that is from main collection, to access this reference variable inside pipeline using ```$$``` like ```$$customer_id```,
-3.```pipeline``` can add pipeline stages same as we do in root level pipeline
+1. ```$lookup``` with orders collection.
+2. ```let```, define variable customer_id that is from main collection, to access this reference variable inside pipeline using ```$$``` like ```$$customer_id```.
+3. ```pipeline``` can add pipeline stages same as we do in root level pipeline
 4. ```$expr``` whenever we match internal fields it requires expression match condition, so ```$$customer_id``` is parent collection field that declared in let and $customer_id is child collection's/current collection's field
 5. ```$lookup``` with orderitems collection
 
