@@ -291,6 +291,25 @@ db.restaurants.dropIndex("cuisine_1_grades.score_1")
 { "nIndexesWas" : 4, "ok" : 1 }
 ```
 
+### CreateView
+Syntax
+```js
+db.createView(<view>, <source>, <pipeline>, <options>)
+```
+
+Example
+```js
+db.createView('postsTitles', 'posts',[{$project:{title:1}}]);
+{ "ok" : 1 }
+
+
+db.postsTitles.find();
+```
+
+
+
+
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
 </div>
+
