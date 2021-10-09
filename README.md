@@ -7,9 +7,6 @@
 * *[MongoDB Commands](mongodb-commands.md)*
 * *[MongoDB Coding Practice](mongodb-code.md)*
 
-## Examples
-* *[Join 3 or More Collections](/examples/join-3-or-more-collections.md)*
-
 <br/>
 
 ## Q. ***What are NoSQL databases? What are the different types of NoSQL databases?***
