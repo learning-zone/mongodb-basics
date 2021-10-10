@@ -300,8 +300,6 @@ db.accounts.dropIndexes()
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-
-
 ## Q. ***Select only selected elements from given collection?***
 
 Consider a ```books``` collection with the following document:
@@ -336,6 +334,7 @@ db.books.aggregate([
 }
 ])
 ```
+
 The operation results in the following document:
 
 ```js
@@ -354,16 +353,16 @@ The operation results in the following document:
 }
 ```
 
-## Join 3 or more collections
+## Q. ***How to join 3 or more collections in MongoDB?***
 
 Let's say we have 3 hypothetical collections in MongoDB: customers, orders, and orderItems.
 
 Each customer has multiple orders, and each order has multiple order items.
 
-
-### customers
+**Example:**
 
 ```js
+// customers
 [
     {
         customer_id: 1,
@@ -376,9 +375,9 @@ Each customer has multiple orders, and each order has multiple order items.
         email: "bob.jones@example.com"
     }
 ]
-```
-### orders
-```js
+
+
+// orders
 [
     {
         order_id: 1,
@@ -389,10 +388,9 @@ Each customer has multiple orders, and each order has multiple order items.
         customer_id: 1
     }
 ]
-```
 
-### orderItems
-```js
+
+// orderItems
 [
     {
         order_item_id: 1,
@@ -415,7 +413,8 @@ Each customer has multiple orders, and each order has multiple order items.
 ]
 ```
 
-### Desired Result
+**Desired Result:**
+
 ```js
 [
     {
@@ -456,8 +455,7 @@ Each customer has multiple orders, and each order has multiple order items.
 ]
 ```
 
-
-# Answer
+### Answer
 
 Do nested lookup using lookup with pipeline,
 
@@ -466,7 +464,6 @@ Do nested lookup using lookup with pipeline,
 3. ```pipeline``` can add pipeline stages same as we do in root level pipeline
 4. ```$expr``` whenever we match internal fields it requires expression match condition, so ```$$customer_id``` is parent collection field that declared in let and $customer_id is child collection's/current collection's field
 5. ```$lookup``` with orderitems collection
-
 
 ```js
 db.customers.aggregate([
@@ -491,5 +488,6 @@ db.customers.aggregate([
 ])
 ```
 
-
-
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
