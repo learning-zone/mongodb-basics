@@ -1486,9 +1486,20 @@ Capped collections restrict updates to the documents if the update results in in
 </div>
 
 ## Q. ***What is splitting in MongoDB?***
+
+Splitting is a process that keeps chunks from growing too large. When a chunk grows beyond a specified chunk size, or if the number of documents in the chunk exceeds Maximum Number of Documents Per Chunk to Migrate, MongoDB splits the chunk based on the shard key values the chunk represent.
+
+<p align="center">
+  <img src="assets/mongoSplitting.png" alt="Document Databases" width="400px" />
+</p>
+
 ## Q. ***Explain what is horizontal scalability in mongodb?***
 
-*ToDo*
+Horizontal Scaling involves dividing the system dataset and load over multiple servers, adding additional servers to increase capacity as required. While the overall speed or capacity of a single machine may not be high, each machine handles a subset of the overall workload, potentially providing better efficiency than a single high-speed high-capacity server. Expanding the capacity of the deployment only requires adding additional servers as needed, which can be a lower overall cost than high-end hardware for a single machine. The trade off is increased complexity in infrastructure and maintenance for the deployment.
+
+<p align="center">
+  <img src="assets/horizontal-vs-vertical-scaling.png" alt="Document Databases" width="400px" />
+</p>
 
 <div align="right">
     <b><a href="#">↥ back to top</a></b>
