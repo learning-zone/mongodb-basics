@@ -1490,7 +1490,7 @@ Capped collections restrict updates to the documents if the update results in in
 Splitting is a process that keeps chunks from growing too large. When a chunk grows beyond a specified chunk size, or if the number of documents in the chunk exceeds Maximum Number of Documents Per Chunk to Migrate, MongoDB splits the chunk based on the shard key values the chunk represent.
 
 <p align="center">
-  <img src="assets/mongoSplitting.png" alt="Document Databases" width="400px" />
+  <img src="assets/mongoSplitting.svg" alt="Document Databases" width="400px" />
 </p>
 
 ## Q. ***Explain what is horizontal scalability in mongodb?***
