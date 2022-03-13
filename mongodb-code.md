@@ -23,11 +23,11 @@ db.isMaster()
 
 ## Q. ***How to combine data from multiple collections into one collection?***
 
-**$lookup**
+**$lookup:**
 
 Performs a left outer join to an unsharded collection in the same database to filter in documents from the “joined” collection for processing. To each input document, the `$lookup` stage adds a new array field whose elements are the matching documents from the “joined” collection. The `$lookup` stage passes these reshaped documents to the next stage.
 
-**Syntax**
+**Syntax:**
 
 ```js
 {
@@ -353,6 +353,10 @@ The operation results in the following document:
 }
 ```
 
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
 ## Q. ***How to join 3 or more collections in MongoDB?***
 
 Let's say we have 3 hypothetical collections in MongoDB: customers, orders, and orderItems.
@@ -486,6 +490,36 @@ db.customers.aggregate([
     }
   }
 ])
+```
+
+<div align="right">
+    <b><a href="#">↥ back to top</a></b>
+</div>
+
+## Q. ***How to validate data in mongodb?***
+
+`db.collection.validate(<documents>)` validates a collection. The method scans a collection data and indexes for correctness and returns the result.
+
+**Syntax:**
+
+```js
+db.collection.validate( {
+   full: <boolean>,          // Optional
+   repair: <boolean>         // Optional, added in MongoDB 5.0
+} )
+```
+
+**Example:**
+
+```js
+// validate a collection using the default validation setting
+db.myCollection.validate({ })
+
+// perform a full validation of collection
+db.myCollection.validate( { full: true } )
+
+// repair collection
+db.myCollection.validate( { repair: true } )
 ```
 
 <div align="right">
