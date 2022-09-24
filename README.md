@@ -9,18 +9,18 @@
 
 <br/>
 
-## Q. ***What are NoSQL databases? What are the different types of NoSQL databases?***
+## Q. What are the different types of NoSQL databases?
 
 NoSQL is a non-relational DBMS, that does not require a fixed schema, avoids joins, and is easy to scale. The purpose of using a NoSQL database is for distributed data stores with humongous data storage needs. NoSQL is used for Big data and real-time web apps.
 
-**Types of NoSQL Databases**
+**Types of NoSQL Databases:**
 
 * Document databases
 * Key-value stores
 * Column-oriented databases
 * Graph databases
 
-**1. Document databases**
+**1. Document databases:**
 
 A document database stores data in JSON, BSON , or XML documents. In a document database, documents can be nested. Particular elements can be indexed for faster querying.
 
@@ -32,7 +32,7 @@ Documents can be stored and retrieved in a form that is much closer to the data 
   <img src="assets/document-database.png" alt="Document Databases" width="400px" />
 </p>
 
-**2. Key-value Stores**
+**2. Key-value Stores:**
 
 Data is stored in key/value pairs. It is designed in such a way to handle lots of data and heavy load. Key-value pair storage databases store data as a hash table where each key is unique, and the value can be a JSON, BLOB(Binary Large Objects), string, etc.
 
@@ -42,7 +42,7 @@ Data is stored in key/value pairs. It is designed in such a way to handle lots o
   <img src="assets/key-value-database.png" alt="Key-value Stores" width="300px" />
 </p>
 
-**3. Column-Oriented Databases**
+**3. Column-Oriented Databases:**
 
 Column-oriented databases work on columns and are based on BigTable paper by Google. Every column is treated separately. The values of single column databases are stored contiguously.
 
@@ -54,7 +54,7 @@ They deliver high performance on aggregation queries like SUM, COUNT, AVG, MIN, 
   <img src="assets/column-database.png" alt="Column-Oriented Databases" width="300px" />
 </p>
 
-**4. Graph Databases**
+**4. Graph Databases:**
 
 A graph type database stores entities as well the relations amongst those entities. The entity is stored as a node with the relationship as edges. An edge gives a relationship between nodes. Every node and edge has a unique identifier.
 
@@ -72,11 +72,11 @@ Graph base databases mostly used for social networks, logistics, spatial data.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is MongoDB?***
+## Q. What is MongoDB?
 
 **MongoDB** is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents. Documents consist of key-value pairs which are the basic unit of data in MongoDB. Collections contain sets of documents and function which is the equivalent of relational database tables.
 
-**Key Features**
+**Key Features:**
 
 * Document Oriented and NoSQL database.
 * Supports Aggregation
@@ -89,7 +89,7 @@ Graph base databases mostly used for social networks, logistics, spatial data.
 * MongoDB Replica Set (Provides high availability)
 * Supports Multiple Storage Engines
 
-**Key Components**
+**Key Components:**
 
 **1. _id**: The `_id` field represents a unique value in the MongoDB document. The `_id` field is like the document\'s primary key. If you create a new document without an `_id` field, MongoDB will automatically create the field.
 
@@ -117,13 +117,13 @@ Connecting MongoDB Cloud using MongoDB Compass
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are Indexes in MongoDB?***
+## Q. What are Indexes in MongoDB?
 
 Indexes support the efficient execution of queries in MongoDB. Without indexes, MongoDB must perform a collection scan, i.e. scan every document in a collection, to select those documents that match the query statement. If an appropriate index exists for a query, MongoDB can use the index to limit the number of documents it must inspect.
 
 Indexes are special data structures that store a small portion of the collection\'s data set in an easy to traverse form. The index stores the value of a specific field or set of fields, ordered by the value of the field. The ordering of the index entries supports efficient equality matches and range-based query operations. In addition, MongoDB can return sorted results by using the ordering in the index.
 
-**Example**
+**Example:**
 
 The `createIndex()` method only creates an index if an index of the same specification does not already exist. The following example ( using Node.js ) creates a single key descending index on the name field:
 
@@ -138,15 +138,15 @@ collection.createIndex( { name : -1 }, function(err, result) {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the types of Indexes available in MongoDB?***
+## Q. What are the types of Indexes available in MongoDB?
 
 MongoDB supports the following types of the index for running a query.
 
-**1. Single Field Index**
+**1. Single Field Index:**
 
 MongoDB supports user-defined indexes like single field index. A single field index is used to create an index on the single field of a document. With single field index, MongoDB can traverse in ascending and descending order. By default, each collection has a single field index automatically created on the `_id` field, the primary key.
 
-**Example**
+**Example:**
 
 ```js
 {
@@ -173,7 +173,7 @@ db.people.find( { name : "Alex", age : 30 } )
 db.people.find( { age : { $gt : 25} } )
 ```
 
-**2. Compound Index**
+**2. Compound Index:**
 
 A compound index is an index on multiple fields. Using the same people collection we can create a compound index combining the city and age field.
 
@@ -191,11 +191,11 @@ db.people.find( { city: "Boston" } )
 db.people.find( { city: "Atlanta", age: {$lt: 25}, "person.surname": "Green" } )
 ```
 
-**3. Multikey Index**
+**3. Multikey Index:**
 
 This is the index type for arrays. When creating an index on an array, MongoDB will create an index entry for every element.
 
-**Example**
+**Example:**
 
 ```js
 {
@@ -220,15 +220,15 @@ db.people.find( { hobbies: "music" } )
 db.people.find( { hobbies: "music", hobbies: "gardening" } )
 ```
 
-**4. Geospatial Index**
+**4. Geospatial Index:**
 
 GeoIndexes are a special index type that allows a search based on location, distance from a point and many other different features. To query geospatial data, MongoDB supports two types of indexes – `2d indexes` and `2d sphere indexes`. 2d indexes use planar geometry when returning results and 2dsphere indexes use spherical geometry to return results.
 
-**5. Text Index**
+**5. Text Index:**
 
 It is another type of index that is supported by MongoDB. Text index supports searching for string content in a collection. These index types do not store language-specific stop words (e.g. "the", "a", "or"). Text indexes restrict the words in a collection to only store root words.
 
-**Example**
+**Example:**
 
 Let\'s insert some sample documents.
 
@@ -271,7 +271,7 @@ var entries = db.people("blogs").entries;
 entries.find({$text: {$search: "blog"}, site: "home"})
 ```
 
-**6. Hashed Index**
+**6. Hashed Index:**
 
 MongoDB supports hash-based sharding and provides hashed indexes. These indexes are the hashes of the field value. Shards use hashed indexes and create a hash according to the field value to spread the writes across the sharded instances.
 
@@ -279,15 +279,15 @@ MongoDB supports hash-based sharding and provides hashed indexes. These indexes 
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Explain Index Properties in MongoDB?***
+## Q. Explain Index Properties in MongoDB?
 
-**1. TTL Indexes**
+**1. TTL Indexes:**
 
 TTL ( **Time To Live** ) is a special option that we can apply only to a single field index to permit the automatic deletion of documents after a certain time.
 
 During index creation, we can define an expiration time. After that time, all the documents that are older than the expiration time will be removed from the collection. This kind of feature is very useful when we are dealing with data that don\'t need to persist in the database ( eg. `session data` ).
 
-**Example**
+**Example:**
 
 ```js
 db.sessionlog.createIndex( { "lastUpdateTime": 1 }, { expireAfterSeconds: 1800 } )
@@ -295,14 +295,14 @@ db.sessionlog.createIndex( { "lastUpdateTime": 1 }, { expireAfterSeconds: 1800 }
 
 In this case, MongoDB will drop the documents from the collection automatically once half an hour (1800 seconds) has passed since the value in **lastUpdateTime** field.
 
-**Restrictions**
+**Restrictions:**
 
 * Only single field indexes can have the TTL option
 * the `_id` single field index cannot support the TTL option
 * the indexed field must be a date type
 * a capped collection cannot have a TTL index
 
-**2. Partial indexes**
+**2. Partial indexes:**
 
 A partial index is an index that contains only a subset of the values based on a filter rule. They are useful in cases where:
 
@@ -310,7 +310,7 @@ A partial index is an index that contains only a subset of the values based on a
 * We want to index the most relevant and used values in the query conditions
 * We want to index the most selective values of a field
 
-**Example**
+**Example:**
 
 ```js
 db.people.createIndex(
@@ -326,13 +326,13 @@ In order for the partial index to be used the queries must contain a condition o
 db.people.find( { city: "New Tork", age: { $eq: 20} } )
 ```
 
-**3. Sparse indexes**
+**3. Sparse indexes:**
 
 Sparse indexes are a subset of partial indexes. A sparse index only contains elements for the documents that have the indexed field, even if it is null.
 
 Since MongoDB is a schemaless database, the documents in a collection can have different fields, so an indexed field may not be present in some of them.
 
-**Example**
+**Example:**
 
 To create such an index use the sparse option:
 
@@ -342,11 +342,11 @@ db.people.createIndex( { city: 1 }, { sparse: true } )
 
 In this case, we are assuming there could be documents in the collection with the field city missing. Sparse indexes are based on the existence of a field in the documents and are useful to reduce the size of the index.
 
-**4. Unique indexes**
+**4. Unique indexes:**
 
 MongoDB can create an index as unique. An index defined this way cannot contain duplicate entries.
 
-**Example**
+**Example:**
 
 ```js
 db.people.createIndex( { city: 1 }, { unique: true } )
@@ -364,7 +364,7 @@ By default, the index on `_id` is automatically created as unique.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How many indexes does MongoDB create by default for a new collection?***
+## Q. How many indexes does MongoDB create by default for a new collection?
 
 By default MongoDB creates a unique index on the `_id` field during the creation of a collection. The `_id` index prevents clients from inserting two documents with the same value for the `_id` field.
 
@@ -372,11 +372,11 @@ By default MongoDB creates a unique index on the `_id` field during the creation
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Can you create an index in an array field in MongoDB?***
+## Q. Can you create an index in an array field in MongoDB?
 
 Yes, To index a field that holds an array value, MongoDB creates an index key for each element in the array. Multikey indexes can be constructed over arrays that hold both scalar values (e.g. strings, numbers) and nested documents. MongoDB automatically creates a multikey index if any indexed field is an array.
 
-Syntax
+**Syntax:**
 
 ```js
 db.collection.createIndex( { <field>: < 1 or -1 > } )
@@ -408,7 +408,7 @@ MongoDB can use the multikey index to find documents that have 5 at any position
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why does Profiler use in MongoDB?***
+## Q. Why does Profiler use in MongoDB?
 
 The database profiler captures data information about read and write operations, cursor operations, and database commands. The database profiler writes data in the `system.profile` collection, which is a capped collection.
 
@@ -429,7 +429,7 @@ db.getProfilingLevel()
 0
 ```
 
-**2. To check current profiling status**
+**2. To check current profiling status:**
 
 ```bash
 db.getProfilingStatus()
@@ -439,7 +439,7 @@ db.getProfilingStatus()
 { "was" : 0, "slowms" : 100 }
 ```
 
-**3. To set profiling level**
+**3. To set profiling level:**
 
 ```bash
 db.setProfilingLevel(1, 40)
@@ -452,9 +452,9 @@ db.setProfilingLevel(1, 40)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to remove attribute from MongoDB Object?***
+## Q. How to remove attribute from MongoDB Object?
 
-**$unset**
+**$unset:**
 
 The `$unset` operator deletes a particular field. If the field does not exist, then `$unset` does nothing. When used with `$` to match an array element, `$unset` replaces the matching element with `null` rather than removing the matching element from the array. This behavior keeps consistent the array size and element positions.
 
@@ -498,7 +498,7 @@ db.collection.find(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is "Namespace" in MongoDB?***
+## Q. What is "Namespace" in MongoDB?
 
 MongoDB stores BSON (Binary Interchange and Structure Object Notation) objects in the collection. The concatenation of the collection name and database name is called a namespace
 
@@ -506,7 +506,7 @@ MongoDB stores BSON (Binary Interchange and Structure Object Notation) objects i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is Replication in Mongodb?***
+## Q. What is Replication in Mongodb?
 
 Replication exists primarily to offer data redundancy and high availability. It maintain the durability of data by keeping multiple copies or replicas of that data on physically isolated servers. Replication allows to increase data availability by creating multiple copies of data across servers. This is especially useful if a server crashes or hardware failure.
 
@@ -516,7 +516,7 @@ With MongoDB, replication is achieved through a **Replica Set**. Writer operatio
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is Replica Set in MongoDB?***
+## Q. What is Replica Set in MongoDB?
 
 It is a group of mongo processes that maintain same data set. Replica sets provide redundancy and high availability, and are the basis for all production deployments. A replica set contains a primary node and multiple secondary nodes.
 
@@ -532,11 +532,11 @@ The secondaries replicate the primary\'s oplog and apply the operations to their
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How does MongoDB ensure high availability?***
+## Q. How does MongoDB ensure high availability?
 
 **High Availability (HA)** refers to the improvement of system and app availability by minimizing the downtime caused by routine maintenance operations (planned) and sudden system crashes (unplanned).
 
-**Replica Set**
+**Replica Set:**
 
 The replica set mechanism of MongoDB has two main purposes:
 
@@ -551,7 +551,7 @@ A replica set consists of multiple replica set members. At any given time, one m
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is an Embedded MongoDB Document?***
+## Q. What is an Embedded MongoDB Document?
 
 An embedded, or nested, MongoDB Document is a normal document that is nested inside another document within a MongoDB collection. Embedding connected data in a single document can reduce the number of read operations required to obtain data. In general, we should structure our schema so that application receives all of its required information in a single read operation.
 
@@ -590,7 +590,7 @@ Embedded documents are particularly useful when a **one-to-many** relationship e
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How can you achieve primary key - foreign key relationships in MongoDB?***
+## Q. How can you achieve primary key - foreign key relationships in MongoDB?
 
 The primary key-foreign key relationship can be achieved by embedding one document inside the another. As an example, a department document can have its employee document(s).
 
@@ -598,7 +598,7 @@ The primary key-foreign key relationship can be achieved by embedding one docume
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***When should we embed one document within another in MongoDB?***
+## Q. When should we embed one document within another in MongoDB?
 
 You should consider embedding documents for:
 
@@ -610,7 +610,7 @@ You should consider embedding documents for:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How is data stored in MongoDB?***
+## Q. How is data stored in MongoDB?
 
 In MongoDB, Data is stored in BSON documents (short for `Bin­ary JSON`). These documents are stored in MongoDB in JSON (JavaScript Object Notation) format. JSON documents support embedded fields, so related data and lists of data can be stored with the document instead of an external table. Documents contain one or more fields, and each field contains a value of a specific data type, including arrays, binary data and sub-documents. Documents that tend to share a similar structure are organized as collections.
 
@@ -633,13 +633,13 @@ JSON is formatted as name/value pairs. In JSON documents, field names and values
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the differences between MongoDB and SQL-SERVER?***
+## Q. What are the differences between MongoDB and SQL-SERVER?
 
 * The MongoDB store the data in documents with JSON format but SQL store the data in Table format.
 * The MongoDB provides high performance, high availability, easy scalability etc.  rather than SQL Server.
 * In the MongoDB, we can change the structure simply by adding, removing column from the existing documents.
 
-**MongoDB and SQL Server Comparision Table**
+**MongoDB and SQL Server Comparision Table:**
 
 |Base of Comparison  | MS SQL Server      | MongoDB             |
 |--------------------|--------------------|---------------------|
@@ -665,7 +665,7 @@ JSON is formatted as name/value pairs. In JSON documents, field names and values
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How can you achieve transaction and locking in MongoDB?***
+## Q. How can you achieve transaction and locking in MongoDB?
 
 In MongoDB (4.2), an operation on a single document is atomic. For situations that require atomicity of reads and writes to multiple documents (in a single or multiple collections), MongoDB supports multi-document transactions. With distributed transactions, transactions can be used across multiple operations, collections, databases, documents, and shards.
 
@@ -728,15 +728,15 @@ try {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***When to Use MongoDB Rather than MySQL?***
+## Q. When to Use MongoDB Rather than MySQL?
 
-**1. MongoDB**
+**1. MongoDB:**
 
 MongoDB is one of the most popular document-oriented databases under the banner of NoSQL database. It employs the format of key-value pairs, here called document store. Document stores in MongoDB are created is stored in BSON files which are, in fact, a little-modified version of JSON files and hence all JS are supported.
 
 It offers greater efficiency and reliability which in turn can meet your storage capacity and speed demands. The schema-free implementation of MongoDB eliminates the prerequisites of defining a fixed structure. These models allow hierarchical relationships representation and facilitate the ability to change the structure of the record.
 
-**Pros**
+**Pros:**
 
 * MongoDB has a lower latency per query & spends less CPU time per query because it is doing a lot less work (e.g. no joins, transactions). As a result, it can handle a higher load in terms of queries per second.
 * MongoDB is easier to shard (use in a cluster) because it doesn\'t have to worry about transactions and consistency.
@@ -745,32 +745,32 @@ It offers greater efficiency and reliability which in turn can meet your storage
 * NoSQL databases are cheap and open source.
 * NoSQL database support caching in system memory so it increases data output performance.
 
-**Cons**
+**Cons:**
 
 * MongoDB does not support transactions.
 * In general, MongoDB creates more work (e.g. more CPU cost) for the client server. For example, to join data one has to issue multiple queries and do the join on the client.
 * No Stored Procedures in mongo dB (NoSQL database).
 
-**Reasons to Use a NoSQL Database**
+**Reasons to Use a NoSQL Database:**
 
 * **Storing large volumes of data without structure**: A NoSQL database doesn\'t limit storable data types. Plus, you can add new types as business needs change.
 * **Using cloud computing and storage**: Cloud-based storage is a great solution, but it requires data to be easily spread across multiple servers for scaling. Using affordable hardware on-site for testing and then for production in the cloud is what NoSQL databases are designed for.
 * **Rapid development**: If you are developing using modern agile methodologies, a relational database will slow you down. A NoSQL database doesn\'t require the level of preparation typically needed for relational databases.
 
-**2. MySQL**
+**2. MySQL:**
 
 MySQL is a popular open-source relational database management system (RDBMS) that is developed, distributed and supported by Oracle Corporation. MySQL stores data in tables and uses structured query language (SQL) for database access. It uses Structured Query Language SQL to access and transfer the data and commands such as 'SELECT', 'UPDATE', 'INSERT' and 'DELETE' to manage it.
 
 Related information is stored in different tables but the concept of JOIN operations simplifies the process of correlating it and performing queries across multiple tables and minimize the chances of data duplication. It follows the ACID (Atomic, Consistent, Isolated and Durable) model. This means that once a transaction is complete, the data remains consistent and stable on the disc which may include distinct multiple memory locations.
 
-**Pros**
+**Pros:**
 
 * SQL databases are table based databases.
 * Data store in rows and columns
 * Each row contains a unique instance of data for the categories defined by the columns.
 * Provide facility primary key, to uniquely identify the rows.
 
-**Cons**
+**Cons:**
 
 * Users have to scale relational database on powerful servers that are expensive and difficult to handle. To scale relational database, it has to be distributed on to multiple servers. Handling tables across different servers is difficult.
 * In SQL server\'s data has to fit into tables anyhow. If your data doesn\'t fit into tables, then you need to design your database structure that will be complex and again difficult to handle.
@@ -779,7 +779,7 @@ Related information is stored in different tables but the concept of JOIN operat
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How MongoDB supports ACID transactions and locking functionalities?***
+## Q. How MongoDB supports ACID transactions and locking functionalities?
 
 ACID stands that any update is:
 
@@ -814,7 +814,7 @@ Transactions can be applied to operations against multiple documents contained i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What are the best practices for MongoDB Transactions?***
+## Q. What are the best practices for MongoDB Transactions?
 
 The multi-document transactions are only supported in the `WiredTiger` storage engine. For a single ACID transaction, if you try performing an excessive number of operations, it can result in high pressure on the WiredTiger cache. The cache is always dictated to maintain state for all subsequent writes since the oldest snapshot was created. This means new writes will accumulate in the cache throughout the duration of the transaction and will be flushed only after transactions currently running on old snapshots are committed or aborted.
 
@@ -834,7 +834,7 @@ For the best database performance on the transaction, developers should consider
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Explain limitations of MongoDB Transactions?***
+## Q. Explain limitations of MongoDB Transactions?
 
 MongoDB transactions can exist only for relatively short time periods.  By default, a transaction must span no more than one minute of clock time.  This limitation results from the underlying MongoDB implementation. MongoDB uses MVCC, but unlike databases such as Oracle, the “older” versions of data are kept only in memory.
 
@@ -848,7 +848,7 @@ MongoDB transactions can exist only for relatively short time periods.  By defau
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Should I normalize my data before storing it in MongoDB?***
+## Q. Should I normalize my data before storing it in MongoDB?
 
 Data used by multiple documents can either be embedded (denormalized) or referenced (normalized). Normalization, which is increasing the complexity of the schema by splitting tables into multiple smaller ones to reduce the data redundancy( 1NF, 2NF, 3NF).
 
@@ -881,7 +881,7 @@ In this case, mongoDB document structure should be as follows.
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is upsert operation in MongoDB?***
+## Q. What is upsert operation in MongoDB?
 
 Upsert operation in MongoDB is utilized to save document into collection. If document matches query criteria then it will perform update operation otherwise it will insert a new document into collection.
 
@@ -915,7 +915,7 @@ The car with the name Qualis is checked for existence and if not, a document wit
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Is there an "upsert" option in the mongodb insert command?***
+## Q. Is there an "upsert" option in the mongodb insert command?
 
 The `db.collection.insert()` provides no upsert possibility. Instead, mongo insert inserts a new document into a collection. Upsert is only possible using `db.collection.update()` and `db.collection.save()`.
 
@@ -923,7 +923,7 @@ The `db.collection.insert()` provides no upsert possibility. Instead, mongo inse
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is oplog?***
+## Q. What is oplog?
 
 The OpLog (Operations Log) is a special capped collection that keeps a rolling record of all operations that modify the data stored in databases.
 
@@ -944,7 +944,7 @@ PRIMARY> db.oplog.rs.find()
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Does MongoDB pushes the writes to disk immediately or lazily?***
+## Q. Does MongoDB pushes the writes to disk immediately or lazily?
 
 MongoDB pushes the data to disk lazily. It updates the immediately written to the journal but writing the data from journal to disk happens lazily.
 
@@ -952,7 +952,7 @@ MongoDB pushes the data to disk lazily. It updates the immediately written to th
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to perform a delete operation in MongoDB?***
+## Q. How to perform a delete operation in MongoDB?
 
 MongoDB\'s `db.collection.deleteMany()` and `db.collection.deleteOne()` method is used to delete documents from the collection. Delete operations do not drop indexes, even if deleting all documents from a collection. All write operations in MongoDB are atomic on the level of a single document.
 
@@ -982,7 +982,7 @@ db.inventory.deleteOne( { status: "D" } ) // Delete Only One Document that Match
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***If you remove a document from database, does MongoDB remove it from disk?***
+## Q. If you remove a document from database, does MongoDB remove it from disk?
 
 Yes. If you remove a document from database, MongoDB will remove it from disk too.
 
@@ -990,7 +990,7 @@ Yes. If you remove a document from database, MongoDB will remove it from disk to
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Explain the structure of ObjectID in MongoDB?***
+## Q. Explain the structure of ObjectID in MongoDB?
 
 The **ObjectId(`<hexadecimal>`)** class is the default primary key for a MongoDB document and is usually found in the `_id` field in an inserted document. It returns a new ObjectId value. The 12-byte ObjectId value consists of:
 
@@ -1004,7 +1004,7 @@ The **ObjectId(`<hexadecimal>`)** class is the default primary key for a MongoDB
 
 While the BSON format itself is little-endian, the timestamp and counter values are big-endian, with the most significant bytes appearing first in the byte sequence.
 
-**Create ObjectId**
+**Create ObjectId:**
 
 To create a new objectID manually within the MongoDB we can declare `objectId()` as a method.
 
@@ -1015,7 +1015,7 @@ To create a new objectID manually within the MongoDB we can declare `objectId()`
 ObjectId("5349b4ddd2781d08c09890f3")
 ```
 
-**MongoDB provides three methods for ObjectId**
+**MongoDB provides three methods for ObjectId:**
 
 |  Method               |Description             |
 |-----------------------|------------------------|
@@ -1027,7 +1027,7 @@ ObjectId("5349b4ddd2781d08c09890f3")
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is a covered query in MongoDB?***
+## Q. What is a covered query in MongoDB?
 
 The MongoDB covered query is one which uses an index and does not have to examine any documents. An index will cover a query if it satisfies the following conditions:
 
@@ -1058,7 +1058,7 @@ db.inventory.find(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why MongoDB is not preferred over a 32-bit system?***
+## Q. Why MongoDB is not preferred over a 32-bit system?
 
 When running a 32-bit system build of MongoDB, the total storage size for the server, including data and indexes, is 2 gigabytes. The reason for this is that the MongoDB storage engine uses memory-mapped files for performance.
 
@@ -1068,7 +1068,7 @@ If you are running a 64-bit build of MongoDB, there is virtually no limit to sto
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Can one MongoDB operation lock more than one database?***
+## Q. Can one MongoDB operation lock more than one database?
 
 Yes. Operations like `db.copyDatabase()`, `db.repairDatabase()`, etc. can lock more than one databases involved.
 
@@ -1076,17 +1076,17 @@ Yes. Operations like `db.copyDatabase()`, `db.repairDatabase()`, etc. can lock m
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is Sharding in MongoDB?***
+## Q. What is Sharding in MongoDB?
 
 **Sharding** is a method for distributing data across multiple machines. MongoDB uses sharding to support deployments with very large data sets and high throughput operations.
 
 Database systems with large data sets or high throughput applications can challenge the capacity of a single server. For example, high query rates can exhaust the CPU capacity of the server. Working set sizes larger than the system\'s RAM stress the I/O capacity of disk drives. There are two methods for addressing system growth: vertical and horizontal scaling.
 
-**1. Vertical Scaling**
+**1. Vertical Scaling:**
 
 Vertical Scaling involves increasing the capacity of a single server, such as using a more powerful CPU, adding more RAM, or increasing the amount of storage space.
 
-**2. Horizontal Scaling**
+**2. Horizontal Scaling:**
 
 Horizontal Scaling involves dividing the system dataset and load over multiple servers, adding additional servers to increase capacity as required. While the overall speed or capacity of a single machine may not be high, each machine handles a subset of the overall workload, potentially providing better efficiency than a single high-speed high-capacity server.
 
@@ -1104,13 +1104,13 @@ MongoDB supports horizontal scaling through `sharding`. A MongoDB sharded cluste
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is Aggregation in MongoDB?***
+## Q. What is Aggregation in MongoDB?
 
 Aggregation in MongoDB is an operation used to process the data that returns the computed results. Aggregation basically groups the data from multiple documents and operates in many ways on those grouped data in order to return one combined result.
 
 Aggregate function groups the records in a collection, and can be used to provide total number(sum), average, minimum, maximum etc out of the group selected. In order to perform the aggregate function in MongoDB, aggregate () is the function to be used.
 
-Syntax 
+**Syntax:**
 
 ```js
 db.collection_name.aggregate(aggregate_operation)
@@ -1124,7 +1124,7 @@ MongoDB provides three ways to perform aggregation:
 
 MongoDB\'s aggregation framework is modeled on the concept of data processing pipelines. Documents enter a multi-stage pipeline that transforms the documents into an aggregated result.
 
-**Example**
+**Example:**
 
 ```js
 db.orders.aggregate([
@@ -1135,7 +1135,7 @@ db.orders.aggregate([
 
 The `$match` stage filters the documents by the status field and passes to the next stage those documents that have status equal to "A". The `$group` stage groups the documents by the cust_id field to calculate the sum of the amount for each unique cust_id.
 
-**Expressions used by Aggregate function**
+**Expressions used by Aggregate function:**
 
 |Expression  |Description                                                           |
 |------------|----------------------------------------------------------------------|
@@ -1152,7 +1152,7 @@ The `$match` stage filters the documents by the status field and passes to the n
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Why are MongoDB data files large in size?***
+## Q. Why are MongoDB data files large in size?
 
 MongoDB preallocates data files to reserve space and avoid file system fragmentation when you setup the server.
 
@@ -1160,7 +1160,7 @@ MongoDB preallocates data files to reserve space and avoid file system fragmenta
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How can you isolate your cursors from intervening with the write operations?***
+## Q. How can you isolate your cursors from intervening with the write operations?
 
 As cursor is not isolated during its lifetime, thus intervening write operations on a document may result in cursor that returns a document more than once. The `snapshot()` method can be used on a cursor to isolate the operation for a very specific case. `snapshot()` traverses the index on the `_id` field and guarantees that the query will return each document no more than once.
 
@@ -1173,7 +1173,7 @@ As cursor is not isolated during its lifetime, thus intervening write operations
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***At what interval does MongoDB write updates to the disk?***
+## Q. At what interval does MongoDB write updates to the disk?
 
 By default configuration, MongoDB writes updates to the disk every 60 seconds. However, this is configurable with the `commitIntervalMs` and `syncPeriodSecs` options.
 
@@ -1181,13 +1181,13 @@ By default configuration, MongoDB writes updates to the disk every 60 seconds. H
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What happens if an index does not fit into RAM?***
+## Q. What happens if an index does not fit into RAM?
 
 If the indexes does not fit into RAM, MongoDB reads data from disk which is relatively very much slower than reading from RAM.
 
 Indexes do not have to fit entirely into RAM in all cases. If the value of the indexed field increments with every insert, and most queries select recently added documents; then MongoDB only needs to keep the parts of the index that hold the most recent or "right-most" values in RAM. This allows for efficient index use for read and write operations and minimize the amount of RAM required to support the index.
 
-**Example**: To check the size of indexes
+**Example:** To check the size of indexes
 
 ```js
 > db.collection.totalIndexSize()
@@ -1200,11 +1200,11 @@ Indexes do not have to fit entirely into RAM in all cases. If the value of the i
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Does MongoDB provide a facility to do text search?***
+## Q. Does MongoDB provide a facility to do text search?
 
 MongoDB supports query operations that perform a text search of string content. To perform text search, MongoDB uses a `text index` and the `$text` operator.
 
-**Example**
+**Example:**
 
 A collection stores with the following documents:
 
@@ -1220,7 +1220,7 @@ db.stores.insert(
 )
 ```
 
-**1. Text Index**
+**1. Text Index:**
 
 MongoDB provides `text indexes` to support text search queries on string content. `text indexes` can include any field whose value is a string or an array of string elements.
 
@@ -1228,11 +1228,11 @@ MongoDB provides `text indexes` to support text search queries on string content
 db.stores.createIndex( { name: "text", description: "text" } )
 ```
 
-**2. $text Operator**
+**2. $text Operator:**
 
 Use the `$text` query operator to perform text searches on a collection with a text index. `$text` will tokenize the search string using whitespace and most punctuation as delimiters, and perform a logical OR of all such tokens in the search string.
 
-**Example**:
+**Example:**
 
 ```js
 // Returns all stores containing any terms from the list “coffee”, “shop”, and “java”
@@ -1251,7 +1251,7 @@ db.stores.find( { $text: { $search: "java shop -coffee" } } )
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How does Journaling work in MongoDB?***
+## Q. How does Journaling work in MongoDB?
 
 Mongod primarily hosts the write operations in memory in shared view. It is called shared because it has memory mapping in actual disc. In this process, a write operation occurs in mongod, which then creates changes in private view. The first block is memory and the second block is "my disc". After a specified interval, which is called a "journal commit interval", the private view writes those operations in journal directory (residing in the disc).
 
@@ -1267,7 +1267,7 @@ In a scenario where an abruption occurs at any point of time or flash disc remai
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Is MongoDB schema-less?***
+## Q. Is MongoDB schema-less?
 
 As a NoSQL database, MongoDB is considered schemaless because it does not require a rigid, pre-defined schema like a relational database. The database management system (DBMS) enforces a partial schema as data is written, explicitly listing collections and indexes.
 
@@ -1279,11 +1279,11 @@ When we say **schemaless**, we actually mean **dynamically typed schema**, as op
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is a Storage Engine in MongoDB?***
+## Q. What is a Storage Engine in MongoDB?
 
 The storage engine is the component of the database that is responsible for managing how data is stored, both in memory and on disk. MongoDB supports multiple storage engines, as different engines perform better for specific workloads.
 
-**Example**: command to find storage engine
+**Example:** command to find storage engine
 
 ```js
 > db.serverStatus().storageEngine
@@ -1333,9 +1333,9 @@ MMAPv1 is a B-tree based system which powers many of the functions such as stora
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***How to condense large volumes of data in Mongodb?***
+## Q. How to condense large volumes of data in Mongodb?
 
-**compact**
+**compact:**
 
 Rewrites and defragments all data and indexes in a collection. On `WiredTiger` databases, this command will release unneeded disk space to the operating system. This command will perform a compaction "in-line".
 
@@ -1345,7 +1345,7 @@ MongoDB compresses the files by:
 * looping through the documents and re-ordering / re-solving them
 * replacing the original files with the new files
 
-**Syntax**
+**Syntax:**
 
 ```js
 { compact: <collection name> }
@@ -1355,7 +1355,7 @@ MongoDB compresses the files by:
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***Explain relationships in MongoDB?***
+## Q. Explain relationships in MongoDB?
 
 Relationships in MongoDB are used to specify how one or more documents are related to each other. In MongoDB, the relationships can be modelled either by Embedded way or by using the Reference approach. These relationships can be of the following forms:
 
@@ -1363,7 +1363,7 @@ Relationships in MongoDB are used to specify how one or more documents are relat
 * One to Many
 * Many to Many
 
-**Example**: Let us consider the case of storing addresses for users. So, one user can have multiple addresses making this a `1:N` relationship.
+**Example:** Let us consider the case of storing addresses for users. So, one user can have multiple addresses making this a `1:N` relationship.
 
 User Collection
 
@@ -1425,7 +1425,7 @@ This approach maintains all the related data in a single document, which makes i
 
 The drawback is that if the embedded document keeps on growing too much in size, it can impact the read/write performance.
 
-**2. Modeling Referenced Relationships**
+**2. Modeling Referenced Relationships:**
 
 This is the approach of designing normalized relationship. In this approach, both the user and address documents will be maintained separately but the user document will contain a field that will reference the address document\'s id field.
 
@@ -1453,13 +1453,13 @@ With this approach, we will need two queries: first to fetch the `address_ids` f
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is use of capped collection in MongoDB?***
+## Q. What is use of capped collection in MongoDB?
 
 **Capped collections** are fixed-size collections that support high-throughput operations that insert and retrieve documents based on insertion order. Capped collections work in a way similar to `circular buffers`: once a collection fills its allocated space, it makes room for new documents by overwriting the oldest documents in the collection.
 
 Capped collections restrict updates to the documents if the update results in increased document size. Since capped collections store documents in the order of the disk storage, it ensures that the document size does not increase the size allocated on the disk. Capped collections are best for storing log information, cache data, or any other high volume data.
 
-**Example:-**
+**Example:**
 
 ```js
 >db.createCollection( "log", { capped: true, size: 100000 } )
@@ -1485,7 +1485,7 @@ Capped collections restrict updates to the documents if the update results in in
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Q. ***What is splitting in MongoDB?***
+## Q. What is splitting in MongoDB?
 
 Splitting is a process that keeps chunks from growing too large. When a chunk grows beyond a specified chunk size, or if the number of documents in the chunk exceeds Maximum Number of Documents Per Chunk to Migrate, MongoDB splits the chunk based on the shard key values the chunk represent.
 
@@ -1493,7 +1493,7 @@ Splitting is a process that keeps chunks from growing too large. When a chunk gr
   <img src="assets/mongoSplitting.svg" alt="Document Databases" width="400px" />
 </p>
 
-## Q. ***Explain what is horizontal scalability in mongodb?***
+## Q. Explain what is horizontal scalability in mongodb?
 
 Horizontal Scaling involves dividing the system dataset and load over multiple servers, adding additional servers to increase capacity as required. While the overall speed or capacity of a single machine may not be high, each machine handles a subset of the overall workload, potentially providing better efficiency than a single high-speed high-capacity server. Expanding the capacity of the deployment only requires adding additional servers as needed, which can be a lower overall cost than high-end hardware for a single machine. The trade off is increased complexity in infrastructure and maintenance for the deployment.
 
