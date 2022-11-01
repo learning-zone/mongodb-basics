@@ -1311,7 +1311,7 @@ MongoDB supports mainly 3 storage engines whose performance differ in accordance
 
 * WiredTiger Storage Engine
 * In-Memory Storage Engine
-* MMAPv1 Storage Engine
+* ~~MMAPv1 Storage Engine~~ (<a href="https://www.mongodb.com/docs/manual/core/storage-engines/#storage-engines">This Storage Engine has been deprecated after MongoDB 4.2</a>)
 
 **1. WiredTiger Storage Engine**
 
